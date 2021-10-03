@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.8'
 
 gem "camaleon_cms",  '>= 2.4.6.1'
 gem 'draper', '~> 3'
