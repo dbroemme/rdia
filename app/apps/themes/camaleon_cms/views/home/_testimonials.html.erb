@@ -1,0 +1,37 @@
+<div class="section" id="testimonials_section" style="<%= layout_bg %>">
+    <section class="testimonials <%= "parallax_panel" if layout_bg.present? %>" style="<%= bg_color %>">
+        <%= raw '<div class="patteren"></div>' if layout.get_field("pattern") %>
+        <div>
+            <div class="container">
+                <div class="title animate fadeIn">
+                    <h1 class="light"><%= layout.the_title %></h1>
+                    <% if (sub_title = layout.the_field("sub_title")).present? %>
+                        <br/>
+                        <h2><%= sub_title %></h2>
+                    <% end %>
+                    <div class="title-detail"><%= raw layout.the_content %> <%= cama_edit_link(layout.the_edit_url) %></div>
+                </div>
+
+                <i class="fa fa-twitter"></i>
+                <div class="twitter flash animated">
+                    <div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">
+                        <% title, body = [], [] %>
+                        <% current_site.the_posts("camaleon_testimonial").decorate.each_with_index { |testi, index|
+                          title << "<li data-target='#carousel-example-generic2' data-slide-to='#{index}' class='#{"active" if index == 0}'></li>"
+                          body << "<div class='item #{"active" if index == 0}'>
+                                                    <div>#{testi.the_content} #{cama_edit_link(testi.the_edit_url)} <span class='date'>#{testi.the_title}</span></div>
+                                                </div>"
+                        } %>
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <%= raw title.join("") %>
+                        </ol>
+                        <div class="carousel-inner">
+                            <%= raw body.join("") %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,19 @@
+{
+  "name" : "Camaleon Theme",
+  "description" : "Corporate Paid Theme for 50USD. <a target='_blank' href='http://camaleon.tuzitio.com:8080/store/themes/camaleon_cms'>Buy Here.</a>",
+  "thumb" : "images/image.png",
+  "helpers": [
+    "Themes::CamaleonCms::MainHelper"
+  ],
+  "hooks": {
+    "on_active": ["camaleon_cms_on_install_theme"],
+    "on_inactive": ["camaleon_cms_on_uninstall_theme"],
+    "on_theme_settings": ["camaleon_cms_settings"],
+    "contact_form_item_render": ["camaleon_cms_contact"],
+    "contact_form_render": ["camaleon_cms_contact_render"],
+    "front_before_load": ["camaleon_cms_front_before"],
+    "on_render_search": ["camaleon_cms_on_render_search"],
+    "nav_menu_custom": ["camaleon_cms_on_nav_menu_custom"]
+    //here all your hooks
+  }
+}

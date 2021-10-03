@@ -1,0 +1,8 @@
+<% current_site.the_posts("camaleon_layout").decorate.each do |layout|
+  layout_bg = layout.get_field("bg");
+  layout_bg = layout_bg.present? ? "background: url(#{layout_bg}) no-repeat fixed 50% 0;" : ""
+  bg_color = layout.get_field("bg_color");
+  bg_color = bg_color.present? ? "background-color: #{bg_color};":""
+%>
+    <%= render layout.get_option("default_template", "home/custom"), layout_bg: layout_bg, bg_color: bg_color, layout: layout %>
+<% end %>

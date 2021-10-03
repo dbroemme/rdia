@@ -1,0 +1,32 @@
+<div class="section" id="expertise_section" style="<%= layout_bg %>">
+    <section class="about <%= "parallax_panel" if layout_bg.present? %>" style="<%= bg_color %>" id="expertise">
+        <%= raw '<div class="patteren"></div>' if layout.get_field("pattern") %>
+        <div class="experties">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="animate fadeIn title">
+                        <h1 class="light"><%= layout.the_title %> <%= layout.the_edit_link %></h1>
+                        <% if (sub_title = layout.the_field("sub_title")).present? %>
+                            <br/>
+                            <h2><%= sub_title %></h2>
+                        <% end %>
+                        <div class="title-detail descr"><%= raw layout.the_content %></div>
+                    </div>
+                    <div class="skills">
+                        <% current_site.the_posts("camaleon_expertise").decorate.each_with_index do |expertise, index| %>
+                            <div class="skillbar clearfix" data-percent="<%= expertise.get_field("percentage") %>%">
+                                <div class="skillbar-title <%= "dark-title" if index%2==0 %>">
+                                    <span><a href="<%= expertise.the_url %>"><%= expertise.the_title %></a> <%= cama_edit_link(expertise.the_edit_url) %> <b class="toggle fa fa-plus-square"></b></span>
+                                    <div class="c"><%= raw expertise.the_content %></div>
+                                </div>
+                                <div class="skillbar-bar <%= "bg-dark" if index%2==0 %>"></div>
+                                <div class="skill-bar-percent <%= "gray" if index%2==0 %> animate pulse" data-delay="<%= (index + 1)*500 %>"><%= expertise.get_field("percentage") %>%</div>
+                            </div>
+                        <% end %>
+                        <!-- End Skill Bar -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

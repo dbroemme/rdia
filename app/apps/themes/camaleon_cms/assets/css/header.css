@@ -1,0 +1,89 @@
+* {margin: 0; padding: 0; outline: 0;}
+
+
+body {
+
+	
+}
+
+
+.active {
+
+}
+.sTop {
+
+	color:#3d3d3d;
+	
+}
+
+.clear {
+	clear: both;
+}
+.wrap {
+		/*background:url("http://www.live147.com/html/wavex/images/bg.png") top left repeat-x;*/
+		width: 100%;
+		z-index: 10;
+		position: relative;
+		margin: 0 auto;
+		padding: 0;
+
+}
+
+.sTop {
+	
+}
+
+.section {
+	z-index: 10;
+	position: relative;
+	margin: 0 auto;
+	padding: 0 0 0 0;
+}
+
+
+.inner {
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+	min-height: 50px;
+	padding:30px 0;
+	font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	padding:30px 0;
+}
+/* SECTIONS */
+
+
+.s1 {
+	min-height: 0px;
+	padding: 0px 0 0 0;
+
+}
+.s2 {
+	min-height: 0px;
+}
+
+
+.s3 {
+	min-height: 0px;
+
+}
+
+
+.s4 {
+	min-height: 0px;
+
+}
+
+.s5 {
+	min-height: 0px;
+}
+.s6 {
+	min-height: 0px;
+}
+
+
+
+
+

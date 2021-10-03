@@ -1,0 +1,38 @@
+<div class="section" id="clients_section" style="<%= layout_bg %>">
+    <section class="sponsors <%= "parallax_panel" if layout_bg.present? %>" style="<%= bg_color %>">
+        <%= raw '<div class="patteren"></div>' if layout.get_field("pattern") %>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <h1 class="light"><%= layout.the_title %> <%= layout.the_edit_link %></h1>
+                        <% if (sub_title = layout.the_field("sub_title")).present? %>
+                            <br/>
+                            <h2><%= sub_title %></h2>
+                        <% end %>
+                        <div id="carousel_clients" class="carousel slide" data-ride="carousel">
+                            <% title, body = [], [] %>
+                            <% current_site.the_posts("camaleon_clients").decorate.each_with_index { |client, index|
+                              title << "<li data-target='#carousel_clients' data-slide-to='#{index}' class='#{"active" if index == 0}'> <img class='pro-logo' src='#{client.get_field("logo")}' alt=''></li>"
+                              body << "<div class='item #{"active" if index == 0}'>
+                                                    <div>#{client.the_content} <span class='rating'>#{client.the_title}</span>#{client.the_edit_link }</div>
+                                                </div>"
+                            } %>
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators spons">
+                                <%= raw title.join("") %>
+                            </ol>
+                            <div class="carousel-inner spon-detail">
+                                <%= raw body.join("") %>
+                            </div>
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel_clients" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
+                            <a class="right carousel-control" href="#carousel_clients" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

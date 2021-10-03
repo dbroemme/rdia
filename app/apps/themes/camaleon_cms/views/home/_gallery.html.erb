@@ -1,0 +1,47 @@
+<div class="section" id="gallery_section" style="<%= layout_bg %>">
+    <section class="portfolio no-padding-bottom <%= "parallax_panel" if layout_bg.present? %>" style="<%= bg_color %>" id="portfolio">
+        <%= raw '<div class="patteren"></div>' if layout.get_field("pattern") %>
+        <div class="container">
+            <div class="title animate fadeIn">
+                <h1 class="light"><%= layout.the_title %></h1>
+                <% if (sub_title = layout.the_field("sub_title")).present? %>
+                    <br/>
+                    <h2><%= sub_title %></h2>
+                <% end %>
+                <div class="title-detail"><%= raw layout.the_content %> <%= cama_edit_link(layout.the_edit_url) %></div>
+            </div>
+        </div>
+        <% pt_gallery = current_site.the_post_type("camaleon_gallery") %>
+        <div  id="filters">
+            <ul class="clearfix">
+                <li><a href="#" data-filter="*" class="active"><h3><%= ct("all", default: "All") %></h3></a></li>
+                <% pt_gallery.the_categories.no_empty.decorate.each do |cat| %>
+                    <li><a href="#" class="fancybox" data-filter=".<%= cat.the_slug %>"><h3><%= cat.the_title %></h3></a></li>
+                <% end %>
+            </ul>
+        </div>
+        <div id="portfolio-items-wrap">
+            <% pt_gallery.the_posts.includes(:post_type).decorate.each do |gallery| file = gallery.get_field("file", "http://www.microsoft.com/africa/4afrika/images/banner_access.png"); is_photo = ["jpg", "png", "gif", "bmp", "jpeg"].include?(file.split(".").last.downcase); cats = gallery.the_categories.pluck(:slug, :name) %>
+                <div class="portfolio-item <%= cats.map{|t| t.first}.translate.join(" ") %>">
+                    <div class="freshdesignweb">
+                        <div class="image_grid">
+                            <ul id="list" class="portfolio_list da-thumbs">
+                                <li>
+                                    <div class="slideUp"><img src="<%= gallery.get_field("thumb", theme_asset_url("images/portfolio.jpg")) %>"  alt=""></div>
+                                    <article class="da-animate da-slideFromRight" style="display: block;">
+                                        <%= cama_edit_link(gallery.the_edit_url, nil, style: "position: absolute; height: 10px; padding: 0; top: 2px; left: 43%;") %>
+                                        <a class="fancybox <%= is_photo ? "photo-icon" : "fancybox-media video-icon" %> " href="<%= file %>" data-fancybox-group="gallery" title="<%= gallery.the_title %>">
+                                            <i class="fa <%= is_photo ? "fa-camera-retro" : "fa-video-camera" %>"></i>
+                                            <h5><%= gallery.the_title %><br/></h5>
+                                            <span><%= cats.map{|t| t.last}.translate.join(" | ") %></span>
+                                        </a>
+                                    </article>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </section>
+</div>

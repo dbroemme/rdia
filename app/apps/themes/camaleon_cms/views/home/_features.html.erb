@@ -1,0 +1,31 @@
+<div class="section" id="features_section" style="<%= layout_bg %>">
+    <section class="about <%= "parallax_panel" if layout_bg.present? %>" style="<%= bg_color %>"  id="about">
+        <%= raw '<div class="patteren"></div>' if layout.get_field("pattern") %>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="title animate fadeIn">
+                        <h1 class="light"><%= layout.the_title %></h1>
+                        <% if (sub_title = layout.the_field("sub_title")).present? %>
+                            <br/>
+                            <h2><%= sub_title %></h2>
+                        <% end %>
+                        <div class="descr"><%= raw layout.the_content %> <%= cama_edit_link(layout.the_edit_url) %></div><br>
+                    </div>
+                </div>
+                <div class="features">
+                    <% current_site.the_posts("camaleon_features").decorate.each_with_index do |feature, index| %>
+                        <div class="col-md-3 animate fadeIn" data-delay="<%= 500*(index+1) %>">
+                            <a href="<%= feature.the_url %>" title="">
+                                <i class="fa <%= feature.get_field("icon") %> hovicon effect-1 sub-a <%= "even" if index % 2 == 0 %>"></i>
+                            </a>
+                            <h4><%= feature.the_title %></h4>
+                            <p ><%= feature.the_excerpt %> <%= cama_edit_link(feature.the_edit_url) %></p>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BEGIN TEAM CONTAINER -->
+</div>

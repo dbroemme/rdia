@@ -1,0 +1,21 @@
+<div class="section" id="<%= layout.id %>_section" style="<%= layout_bg %>">
+    <section class="latest-pro <%= "parallax_panel" if layout_bg.present? %>" style="<%= bg_color %>">
+        <%= raw '<div class="patteren"></div>' if layout.get_field("pattern") %>
+        <div class="row">
+            <div class="col-md-12">
+                <div class=" animate fadeIn">
+                    <div class="title animate fadeIn">
+                        <h1 class="light"><%= layout.the_title %> <%= layout.the_edit_link %></h1>
+                        <% if (sub_title = layout.the_field("sub_title")).present? %>
+                            <br/>
+                            <h2><%= sub_title %></h2>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="devices animate bounceInUp"><%= raw layout.the_content %></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

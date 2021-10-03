@@ -1,0 +1,21 @@
+<div class="section" id="counters_section" style="<%= layout_bg %>">
+    <!-- END TEAM CONTAINER -->
+    <section class="counters <%= "parallax_panel" if layout_bg.present? %>" style="<%= bg_color %>">
+        <%= raw '<div class="patteren"></div>' if layout.get_field("pattern") %>
+        <div>
+            <div class="container">
+                <div class="row" id="counters">
+                    <%= cama_edit_link(layout.the_edit_url, nil, style: "position: absolute; top: 10px") %>
+                    <% current_site.the_posts("camaleon_counters").decorate.each_with_index do |counter, index| %>
+                        <div class="col-md-3">
+                            <div class="counter" data-top="<%= counter.get_field("count").to_i %>">
+                                <a href="<%= counter.the_url %>" title=""> <span class="timer timer<%= index+1 %>"><%= counter.get_field("count") %></span></a>
+                                <p><%= counter.the_title %> <%= cama_edit_link(counter.the_edit_url) %></p>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

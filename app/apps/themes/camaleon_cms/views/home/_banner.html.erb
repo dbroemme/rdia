@@ -1,0 +1,12 @@
+<div class="section sTop clearfix" id="banner_section" style="<%= bg_color %>">
+    <ul id="demo1">
+        <% current_site.the_posts("camaleon_slider").decorate.each do |slider| %>
+            <li>
+                <img src="<%= slider.get_field("bg", "http://www.aarintechnologies.com/images/home/banner4_bg.jpg") %>"  alt="" />
+                <div class="slide-desc">
+                    <div><div class="small-text <%= slider.get_field("color") == "1" ? "small-text2" : "small-text3" %>"><%= raw slider.the_content %> <%= cama_edit_link(slider.the_edit_url) %></div> </div>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+</div>
