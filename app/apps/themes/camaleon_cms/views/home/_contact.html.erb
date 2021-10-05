@@ -1,20 +1,18 @@
 <div class="section" id="contact_section" style="<%= layout_bg %>">
     <section class="<%= "parallax_panel" if layout_bg.present? %>" style="<%= bg_color %>">
         <div>
-            <%= raw '<div class="patteren"></div>' if layout.get_field("pattern") %>
+            <div class="patteren"></div>
             <div class="container">
-                <div class="title animate fadeIn">
-                    <h1 class="light"><%= layout.the_title %> <%= layout.the_edit_link %></h1>
-                    <% if (sub_title = layout.the_field("sub_title")).present? %>
-                        <br/>
-                        <h2><%= sub_title %></h2>
-                    <% end %>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <%= raw layout.the_content %>
-                    </div>
-                </div>
+<div style="text-align: center;">
+<form method="post" action="https://sendfox.com/form/1rypnx/1xwrzy" class="sendfox-form" id="1xwrzy" data-async="true" data-recaptcha="false">
+<p><input type="email" placeholder="Email" name="email" required /></p>
+<p><label><input type="checkbox" name="gdpr" value="1" required /> I agree to receive email updates and promotions.</label></p>
+<!-- no botz please -->
+<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+<p><button type="submit">Subscribe to the Ruby Does It Again  newsletter</button></p>
+</form>
+<script src="https://sendfox.com/js/form.js"></script>
+</div>
             </div>
         </div>
     </section>

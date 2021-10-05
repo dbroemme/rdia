@@ -15,7 +15,7 @@
                 </div>
                 <div class="features">
                     <% current_site.the_posts("camaleon_features").decorate.each_with_index do |feature, index| %>
-                        <div class="col-md-3 animate fadeIn" data-delay="<%= 500*(index+1) %>">
+                        <div class="col-md-4 animate fadeIn" data-delay="<%= 500*(index+1) %>">
                             <a href="<%= feature.the_url %>" title="">
                                 <i class="fa <%= feature.get_field("icon") %> hovicon effect-1 sub-a <%= "even" if index % 2 == 0 %>"></i>
                             </a>
