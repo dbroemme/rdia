@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Wads::WadsConfig - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  <p class="link">Object
+</div>
+
+    
+<div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+    <li><span class="include">Singleton</span>
+  </ul>
+</div>
+
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li ><a href="#method-i-circle">#circle</a>
+    <li ><a href="#method-i-create_circles">#create_circles</a>
+    <li ><a href="#method-i-create_layout">#create_layout</a>
+    <li ><a href="#method-i-create_layout_for_widget">#create_layout_for_widget</a>
+    <li ><a href="#method-i-current_theme">#current_theme</a>
+    <li ><a href="#method-i-default_dimensions">#default_dimensions</a>
+    <li ><a href="#method-i-get_default_theme">#get_default_theme</a>
+    <li ><a href="#method-i-get_logger">#get_logger</a>
+    <li ><a href="#method-i-set_current_theme">#set_current_theme</a>
+    <li ><a href="#method-i-set_default_layout">#set_default_layout</a>
+    <li ><a href="#method-i-set_log_level">#set_log_level</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Wads::WadsConfig">
+  <h1 id="class-Wads::WadsConfig" class="class">
+    class Wads::WadsConfig
+  </h1>
+
+  <section class="description">
+    
+<p><a href="WadsConfig.html"><code>WadsConfig</code></a> is the one singleton that provides access to resources used throughput the application, including fonts, themes, and layouts.</p>
+
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      <div id="attribute-i-logger" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">logger</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+    </section>
+
+
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+      <div id="method-i-circle" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">circle</span><span
+            class="method-args">(color)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Get a Gosu images instance for the specified color, i.e. COLOR_AQUA ir COLOR_BLUE</p>
+
+          <div class="method-source-code" id="circle-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 320</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">circle</span>(<span class="ruby-identifier">color</span>)
+    <span class="ruby-identifier">create_circles</span> 
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">color</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> 
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">img</span> = <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-identifier">color</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">img</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">get_logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-node">&quot;ERROR: Did not find circle image with color #{color}&quot;</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">img</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-create_circles" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">create_circles</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="create_circles-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 332</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_circles</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@wads_image_circles</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@wads_image_circle_aqua</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;./media/CircleAqua.png&quot;</span>)
+    <span class="ruby-ivar">@wads_image_circle_blue</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;./media/CircleBlue.png&quot;</span>)
+    <span class="ruby-ivar">@wads_image_circle_green</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;./media/CircleGreen.png&quot;</span>)
+    <span class="ruby-ivar">@wads_image_circle_purple</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;./media/CirclePurple.png&quot;</span>)
+    <span class="ruby-ivar">@wads_image_circle_red</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;./media/CircleRed.png&quot;</span>)
+    <span class="ruby-ivar">@wads_image_circle_yellow</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;./media/CircleYellow.png&quot;</span>)
+    <span class="ruby-ivar">@wads_image_circle_gray</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;./media/CircleGray.png&quot;</span>)
+    <span class="ruby-ivar">@wads_image_circle_white</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;./media/CircleWhite.png&quot;</span>)
+    <span class="ruby-ivar">@wads_image_circle_alpha</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;./media/CircleAlpha.png&quot;</span>)
+    <span class="ruby-ivar">@wads_image_circles</span> = {}
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-constant">COLOR_AQUA</span>] = <span class="ruby-ivar">@wads_image_circle_aqua</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-constant">COLOR_BLUE</span>] = <span class="ruby-ivar">@wads_image_circle_blue</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-constant">COLOR_GREEN</span>] = <span class="ruby-ivar">@wads_image_circle_green</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-constant">COLOR_PURPLE</span>] = <span class="ruby-ivar">@wads_image_circle_purple</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-constant">COLOR_RED</span>] = <span class="ruby-ivar">@wads_image_circle_red</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-constant">COLOR_YELLOW</span>] = <span class="ruby-ivar">@wads_image_circle_yellow</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-constant">COLOR_GRAY</span>] = <span class="ruby-ivar">@wads_image_circle_gray</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-constant">COLOR_WHITE</span>] = <span class="ruby-ivar">@wads_image_circle_white</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-constant">COLOR_ALPHA</span>] = <span class="ruby-ivar">@wads_image_circle_alpha</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-value">4294956800</span>] = <span class="ruby-ivar">@wads_image_circle_yellow</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-value">4281893349</span>] = <span class="ruby-ivar">@wads_image_circle_blue</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-value">4294967295</span>] = <span class="ruby-ivar">@wads_image_circle_gray</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-value">4286611584</span>] = <span class="ruby-ivar">@wads_image_circle_gray</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-value">4282962380</span>] = <span class="ruby-ivar">@wads_image_circle_aqua</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-value">4294939648</span>] = <span class="ruby-ivar">@wads_image_circle_red</span>
+    <span class="ruby-ivar">@wads_image_circles</span>[<span class="ruby-value">4292664540</span>] = <span class="ruby-ivar">@wads_image_circle_white</span>    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-create_layout" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">create_layout</span><span
+            class="method-args">(x, y, width, height, widget, layout_type = nil, args = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="create_layout-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 279</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_layout</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">widget</span>, <span class="ruby-identifier">layout_type</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">args</span> = {})
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">layout_type</span>.<span class="ruby-identifier">nil?</span> 
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@default_layout_type</span>.<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">layout_type</span> = <span class="ruby-constant">LAYOUT_VERTICAL_COLUMN</span>
+        <span class="ruby-keyword">else</span> 
+            <span class="ruby-identifier">layout_type</span> = <span class="ruby-ivar">@default_layout_type</span> 
+        <span class="ruby-keyword">end</span> 
+    <span class="ruby-keyword">end</span>
+ 
+    <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-ivar">@default_layout_args</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">nil?</span> 
+            <span class="ruby-identifier">args</span> = <span class="ruby-ivar">@default_layout_args</span> 
+        <span class="ruby-keyword">else</span> 
+            <span class="ruby-identifier">args</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-ivar">@default_layout_args</span>)
+        <span class="ruby-keyword">end</span> 
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">layout_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">LAYOUT_VERTICAL_COLUMN</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">VerticalColumnLayout</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">widget</span>, <span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">layout_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">LAYOUT_TOP_MIDDLE_BOTTOM</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">TopMiddleBottomLayout</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">widget</span>, <span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">layout_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">LAYOUT_BORDER</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">BorderLayout</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">widget</span>, <span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">layout_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">LAYOUT_HEADER_CONTENT</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">HeaderContentLayout</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">widget</span>, <span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">layout_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">LAYOUT_CONTENT_FOOTER</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">ContentFooterLayout</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">widget</span>, <span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">layout_type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">LAYOUT_EAST_WEST</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">EastWestLayout</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">widget</span>, <span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;#{layout_type} is an unsupported layout type&quot;</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-create_layout_for_widget" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">create_layout_for_widget</span><span
+            class="method-args">(widget, layout_type = nil, args = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="create_layout_for_widget-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 275</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_layout_for_widget</span>(<span class="ruby-identifier">widget</span>, <span class="ruby-identifier">layout_type</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">args</span> = {})
+    <span class="ruby-identifier">create_layout</span>(<span class="ruby-identifier">widget</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">height</span>, <span class="ruby-identifier">widget</span>, <span class="ruby-identifier">layout_type</span>, <span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-current_theme" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">current_theme</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Get a reference to the current theme. If one has not been set using <a href="WadsConfig.html#method-i-set_current_theme"><code>set_current_theme</code></a>(theme), the default theme will be used.</p>
+
+          <div class="method-source-code" id="current_theme-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 236</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">current_theme</span> 
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current_theme</span>.<span class="ruby-identifier">nil?</span> 
+        <span class="ruby-ivar">@current_theme</span> = <span class="ruby-identifier">get_default_theme</span> 
+    <span class="ruby-keyword">end</span> 
+    <span class="ruby-ivar">@current_theme</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-default_dimensions" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">default_dimensions</span><span
+            class="method-args">(widget_type)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>This method returns the default dimensions for the given widget type as a two value array of the form [width, height]. This helps the layout manager allocate space to widgets within a layout and container. The string value max tells the layout to use all available space in that dimension (either x or y)</p>
+
+          <div class="method-source-code" id="default_dimensions-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 257</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">default_dimensions</span>(<span class="ruby-identifier">widget_type</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@default_dimensions</span>.<span class="ruby-identifier">nil?</span> 
+        <span class="ruby-ivar">@default_dimensions</span> = {}
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_TEXT</span>] = [<span class="ruby-value">100</span>, <span class="ruby-value">20</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_IMAGE</span>] = [<span class="ruby-value">100</span>, <span class="ruby-value">100</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_TABLE</span>] = [<span class="ruby-string">&quot;max&quot;</span>, <span class="ruby-string">&quot;max&quot;</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_HORIZONTAL_PANEL</span>] = [<span class="ruby-string">&quot;max&quot;</span>, <span class="ruby-value">100</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_VERTICAL_PANEL</span>] = [<span class="ruby-value">100</span>, <span class="ruby-string">&quot;max&quot;</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_MAX_PANEL</span>] = [<span class="ruby-string">&quot;max&quot;</span>, <span class="ruby-string">&quot;max&quot;</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_DOCUMENT</span>] = [<span class="ruby-string">&quot;max&quot;</span>, <span class="ruby-string">&quot;max&quot;</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_GRAPH</span>] = [<span class="ruby-string">&quot;max&quot;</span>, <span class="ruby-string">&quot;max&quot;</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_BUTTON</span>] = [<span class="ruby-value">100</span>, <span class="ruby-value">26</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_GENERIC</span>] = [<span class="ruby-string">&quot;max&quot;</span>, <span class="ruby-string">&quot;max&quot;</span>]
+        <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-constant">ELEMENT_PLOT</span>] = [<span class="ruby-string">&quot;max&quot;</span>, <span class="ruby-string">&quot;max&quot;</span>]
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@default_dimensions</span>[<span class="ruby-identifier">widget_type</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-get_default_theme" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">get_default_theme</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Get the default theme which is white text on a black background that uses icons (primarily used in the <a href="Graph.html"><code>Graph</code></a> display widget currently)</p>
+
+          <div class="method-source-code" id="get_default_theme-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 218</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_default_theme</span> 
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@default_theme</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-ivar">@default_theme</span> = <span class="ruby-constant">GuiTheme</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">COLOR_WHITE</span>,                <span class="ruby-comment"># text color</span>
+                                      <span class="ruby-constant">COLOR_HEADER_BRIGHT_BLUE</span>,   <span class="ruby-comment"># graphic elements</span>
+                                      <span class="ruby-constant">COLOR_BORDER_BLUE</span>,          <span class="ruby-comment"># border color</span>
+                                      <span class="ruby-constant">COLOR_BLACK</span>,                <span class="ruby-comment"># background</span>
+                                      <span class="ruby-constant">COLOR_LIGHT_GRAY</span>,           <span class="ruby-comment"># selected item</span>
+                                      <span class="ruby-keyword">true</span>,                       <span class="ruby-comment"># use icons</span>
+                                      <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">22</span>),         <span class="ruby-comment"># regular font</span>
+                                      <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">38</span>))         <span class="ruby-comment"># large font</span>
+    <span class="ruby-keyword">end</span> 
+    <span class="ruby-ivar">@default_theme</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-get_logger" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">get_logger</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="get_logger-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_logger</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@logger</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-ivar">@logger</span> = <span class="ruby-constant">Logger</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">STDOUT</span>)
+    <span class="ruby-keyword">end</span> 
+    <span class="ruby-ivar">@logger</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-set_current_theme" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">set_current_theme</span><span
+            class="method-args">(theme)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p>Set the theme to be used by wads widgets</p>
+
+          <div class="method-source-code" id="set_current_theme-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 246</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_current_theme</span>(<span class="ruby-identifier">theme</span>) 
+    <span class="ruby-ivar">@current_theme</span> = <span class="ruby-identifier">theme</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-set_default_layout" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">set_default_layout</span><span
+            class="method-args">(layout_type, layout_args = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="set_default_layout-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 312</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_default_layout</span>(<span class="ruby-identifier">layout_type</span>, <span class="ruby-identifier">layout_args</span> = {}) 
+    <span class="ruby-ivar">@default_layout_type</span> = <span class="ruby-identifier">layout_type</span> 
+    <span class="ruby-ivar">@default_layout_args</span> = <span class="ruby-identifier">layout_args</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-set_log_level" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">set_log_level</span><span
+            class="method-args">(level)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          <p><a href="../Wads.html"><code>Wads</code></a> uses the Ruby logger, and you can conrol the log level using this method. Valid values are &#39;debug&#39;, &#39;info&#39;, &#39;warn&#39;, &#39;error&#39;</p>
+
+          <div class="method-source-code" id="set_log_level-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 210</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_log_level</span>(<span class="ruby-identifier">level</span>)
+    <span class="ruby-identifier">get_logger</span>.<span class="ruby-identifier">level</span> = <span class="ruby-identifier">level</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

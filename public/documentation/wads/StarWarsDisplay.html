@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class StarWarsDisplay - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  <p class="link">Widget
+</div>
+
+    
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    <li ><a href="#method-i-handle_key_press">#handle_key_press</a>
+    <li ><a href="#method-i-handle_mouse_down">#handle_mouse_down</a>
+    <li ><a href="#method-i-sample_content">#sample_content</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-StarWarsDisplay">
+  <h1 id="class-StarWarsDisplay" class="class">
+    class StarWarsDisplay
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      <div id="attribute-i-graph" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">graph</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+    </section>
+
+
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+      <div id="method-c-new" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(graph)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File samples/star_wars.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">graph</span>)
+    <span class="ruby-keyword">super</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">800</span>, <span class="ruby-value">800</span>)
+    <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_TOP_MIDDLE_BOTTOM</span>)
+    <span class="ruby-ivar">@graph</span> = <span class="ruby-identifier">graph</span>
+
+    <span class="ruby-identifier">image</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_image</span>(<span class="ruby-string">&quot;./media/Banner.png&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_TOP</span>})
+    <span class="ruby-identifier">image</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;Wads Sample App&quot;</span>, <span class="ruby-value">10</span>, <span class="ruby-value">20</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span>)
+    <span class="ruby-identifier">image</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-node">&quot;Version #{Wads::VERSION}&quot;</span>, <span class="ruby-value">13</span>, <span class="ruby-value">54</span>)
+
+    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CENTER</span>})
+
+    <span class="ruby-identifier">panel</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_horizontal_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_BOTTOM</span>})
+    <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Exit&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> <span class="ruby-value">30</span>) <span class="ruby-keyword">do</span>
+        <span class="ruby-constant">WidgetResult</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">true</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">center_children</span>
+    <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">disable_border</span>
+
+    <span class="ruby-ivar">@data_table</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_single_select_table</span>(
+        [<span class="ruby-string">&quot;Character&quot;</span>, <span class="ruby-string">&quot;Number of Scenes&quot;</span>], <span class="ruby-value">4</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CENTER</span>})
+
+    <span class="ruby-ivar">@graph</span>.<span class="ruby-identifier">node_list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">character</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@data_table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-identifier">character</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">character</span>.<span class="ruby-identifier">value</span>], <span class="ruby-identifier">character</span>.<span class="ruby-identifier">get_tag</span>(<span class="ruby-constant">ARG_COLOR</span>))
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@graph_display</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_graph_display</span>(<span class="ruby-ivar">@graph</span>, <span class="ruby-constant">GRAPH_DISPLAY_EXPLORER</span>,
+                                                  { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CENTER</span>})
+
+    <span class="ruby-identifier">disable_border</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+      <div id="method-i-handle_key_press" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">handle_key_press</span><span
+            class="method-args">(id, mouse_x, mouse_y)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="handle_key_press-source">
+            <pre><span class="ruby-comment"># File samples/star_wars.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_key_press</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">KbUp</span>
+        <span class="ruby-ivar">@data_table</span>.<span class="ruby-identifier">scroll_up</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">KbDown</span>
+        <span class="ruby-ivar">@data_table</span>.<span class="ruby-identifier">scroll_down</span>
+    <span class="ruby-keyword">end</span> 
+    <span class="ruby-constant">WidgetResult</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-handle_mouse_down" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">handle_mouse_down</span><span
+            class="method-args">(mouse_x, mouse_y)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="handle_mouse_down-source">
+            <pre><span class="ruby-comment"># File samples/star_wars.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_mouse_down</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@data_table</span>.<span class="ruby-identifier">contains_click</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
+        <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@data_table</span>.<span class="ruby-identifier">set_selected_row</span>(<span class="ruby-identifier">mouse_y</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">node</span> = <span class="ruby-ivar">@graph</span>.<span class="ruby-identifier">find_node</span>(<span class="ruby-identifier">val</span>)
+            <span class="ruby-comment">#@graph_display.set_center_node(node, 2)</span>
+            <span class="ruby-ivar">@graph_display</span>.<span class="ruby-identifier">set_explorer_display</span>(<span class="ruby-identifier">node</span>)
+        <span class="ruby-keyword">end</span>  
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-sample_content" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">sample_content</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="sample_content-source">
+            <pre><span class="ruby-comment"># File samples/star_wars.rb, line 85</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sample_content</span>
+        <span class="ruby-identifier">&lt;&lt;~HEREDOC</span>
+<span class="ruby-value">          This sample analysis shows the interactions between characters in the Star Wars
+          Episode 4: A New Hope. Click on a character to see more detail.
+</span><span class="ruby-identifier">        HEREDOC</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

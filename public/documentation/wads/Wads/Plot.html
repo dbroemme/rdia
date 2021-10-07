@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Wads::Plot - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+<div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  <p class="link"><a href="Widget.html">Wads::Widget</a>
+</div>
+
+    
+    
+    
+<!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    <li ><a href="#method-i-add_data_point">#add_data_point</a>
+    <li ><a href="#method-i-add_data_set">#add_data_set</a>
+    <li ><a href="#method-i-decrease_data_point_size">#decrease_data_point_size</a>
+    <li ><a href="#method-i-define_range">#define_range</a>
+    <li ><a href="#method-i-display_grid_lines">#display_grid_lines</a>
+    <li ><a href="#method-i-display_lines_for_point_set">#display_lines_for_point_set</a>
+    <li ><a href="#method-i-draw_cursor_lines">#draw_cursor_lines</a>
+    <li ><a href="#method-i-draw_x">#draw_x</a>
+    <li ><a href="#method-i-draw_y">#draw_y</a>
+    <li ><a href="#method-i-get_x_data_val">#get_x_data_val</a>
+    <li ><a href="#method-i-get_y_data_val">#get_y_data_val</a>
+    <li ><a href="#method-i-increase_data_point_size">#increase_data_point_size</a>
+    <li ><a href="#method-i-is_on_screen">#is_on_screen</a>
+    <li ><a href="#method-i-range_set-3F">#range_set?</a>
+    <li ><a href="#method-i-remove_data_set">#remove_data_set</a>
+    <li ><a href="#method-i-render">#render</a>
+    <li ><a href="#method-i-scroll_down">#scroll_down</a>
+    <li ><a href="#method-i-scroll_left">#scroll_left</a>
+    <li ><a href="#method-i-scroll_right">#scroll_right</a>
+    <li ><a href="#method-i-scroll_up">#scroll_up</a>
+    <li ><a href="#method-i-toggle_visibility">#toggle_visibility</a>
+    <li ><a href="#method-i-x_val_to_pixel">#x_val_to_pixel</a>
+    <li ><a href="#method-i-y_val_to_pixel">#y_val_to_pixel</a>
+    <li ><a href="#method-i-zoom_in">#zoom_in</a>
+    <li ><a href="#method-i-zoom_out">#zoom_out</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Wads::Plot">
+  <h1 id="class-Wads::Plot" class="class">
+    class Wads::Plot
+  </h1>
+
+  <section class="description">
+    
+<p>A two-dimensional graph display which plots a number of <a href="PlotPoint.html"><code>PlotPoint</code></a> objects. Options include grid lines that can be displayed, as well as whether lines should be drawn connecting each point in a data set.</p>
+
+  </section>
+
+  <section id="5Buntitled-5D" class="documentation-section">
+
+
+
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      <div id="attribute-i-display_grid" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">display_grid</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-i-display_lines" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">display_lines</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-i-points" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">points</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-i-visibility_map" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">visibility_map</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-i-visible_range" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">visible_range</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-i-zoom_level" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">zoom_level</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+    </section>
+
+
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+      <div id="method-c-new" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(x, y, width, height)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Widget.html#method-c-new"><code>Wads::Widget::new</code></a>
+            </div>
+
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2429</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>) 
+    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+    <span class="ruby-identifier">set_dimensions</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
+    <span class="ruby-ivar">@display_grid</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-ivar">@display_lines</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-ivar">@grid_line_color</span> = <span class="ruby-constant">COLOR_LIGHT_GRAY</span>
+    <span class="ruby-ivar">@cursor_line_color</span> = <span class="ruby-constant">COLOR_DARK_GRAY</span> 
+    <span class="ruby-ivar">@zero_line_color</span> = <span class="ruby-constant">COLOR_HEADER_BRIGHT_BLUE</span> 
+    <span class="ruby-ivar">@zoom_level</span> = <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@data_point_size</span> = <span class="ruby-value">4</span>
+    <span class="ruby-comment"># Hash of rendered points keyed by data set name, so we can toggle visibility</span>
+    <span class="ruby-ivar">@points_by_data_set_name</span> = {}
+    <span class="ruby-ivar">@visibility_map</span> = {}
+    <span class="ruby-identifier">disable_border</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+      <div id="method-i-add_data_point" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">add_data_point</span><span
+            class="method-args">(data_set_name, data_x, data_y, color = COLOR_MAROON)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="add_data_point-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2504</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_data_point</span>(<span class="ruby-identifier">data_set_name</span>, <span class="ruby-identifier">data_x</span>, <span class="ruby-identifier">data_y</span>, <span class="ruby-identifier">color</span> = <span class="ruby-constant">COLOR_MAROON</span>) 
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">range_set?</span>
+        <span class="ruby-identifier">rendered_points</span> = <span class="ruby-ivar">@points_by_data_set_name</span>[<span class="ruby-identifier">data_set_name</span>]
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">rendered_points</span>.<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">rendered_points</span> = []
+            <span class="ruby-ivar">@points_by_data_set_name</span>[<span class="ruby-identifier">data_set_name</span>] = <span class="ruby-identifier">rendered_points</span>
+        <span class="ruby-keyword">end</span> 
+        <span class="ruby-identifier">rendered_points</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">PlotPoint</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">draw_x</span>(<span class="ruby-identifier">data_x</span>), <span class="ruby-identifier">draw_y</span>(<span class="ruby-identifier">data_y</span>),
+                                         <span class="ruby-identifier">data_x</span>, <span class="ruby-identifier">data_y</span>,
+                                         <span class="ruby-identifier">color</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@visibility_map</span>[<span class="ruby-identifier">data_set_name</span>].<span class="ruby-identifier">nil?</span>
+            <span class="ruby-ivar">@visibility_map</span>[<span class="ruby-identifier">data_set_name</span>] = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;ERROR: range not set, cannot add data&quot;</span>)
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-add_data_set" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">add_data_set</span><span
+            class="method-args">(data_set_name, rendered_points)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="add_data_set-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2522</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_data_set</span>(<span class="ruby-identifier">data_set_name</span>, <span class="ruby-identifier">rendered_points</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">range_set?</span>
+        <span class="ruby-ivar">@points_by_data_set_name</span>[<span class="ruby-identifier">data_set_name</span>] = <span class="ruby-identifier">rendered_points</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@visibility_map</span>[<span class="ruby-identifier">data_set_name</span>].<span class="ruby-identifier">nil?</span>
+            <span class="ruby-ivar">@visibility_map</span>[<span class="ruby-identifier">data_set_name</span>] = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">error</span>(<span class="ruby-string">&quot;ERROR: range not set, cannot add data&quot;</span>)
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-decrease_data_point_size" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">decrease_data_point_size</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="decrease_data_point_size-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2457</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decrease_data_point_size</span> 
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@data_point_size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>
+        <span class="ruby-ivar">@data_point_size</span> = <span class="ruby-ivar">@data_point_size</span> <span class="ruby-operator">-</span> <span class="ruby-value">2</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-define_range" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">define_range</span><span
+            class="method-args">(range)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="define_range-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2491</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">define_range</span>(<span class="ruby-identifier">range</span>)
+    <span class="ruby-ivar">@visible_range</span> = <span class="ruby-identifier">range</span>
+    <span class="ruby-ivar">@zoom_level</span> = <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-display_grid_lines" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">display_grid_lines</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="display_grid_lines-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2587</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display_grid_lines</span>
+    <span class="ruby-identifier">grid_widgets</span> = []
+
+    <span class="ruby-identifier">x_lines</span> = <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">grid_line_x_values</span>
+    <span class="ruby-identifier">y_lines</span> = <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">grid_line_y_values</span>
+    <span class="ruby-identifier">first_x</span> = <span class="ruby-identifier">draw_x</span>(<span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">left_x</span>)
+    <span class="ruby-identifier">last_x</span> = <span class="ruby-identifier">draw_x</span>(<span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">right_x</span>)
+    <span class="ruby-identifier">first_y</span> = <span class="ruby-identifier">draw_y</span>(<span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">bottom_y</span>)
+    <span class="ruby-identifier">last_y</span> = <span class="ruby-identifier">draw_y</span>(<span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">top_y</span>)
+
+    <span class="ruby-identifier">x_lines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">grid_x</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">dx</span> = <span class="ruby-identifier">draw_x</span>(<span class="ruby-identifier">grid_x</span>)
+        <span class="ruby-identifier">color</span> = <span class="ruby-ivar">@grid_line_color</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">grid_x</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">grid_x</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">left_x</span>.<span class="ruby-identifier">to_i</span>
+            <span class="ruby-identifier">color</span> = <span class="ruby-ivar">@zero_line_color</span> 
+        <span class="ruby-keyword">end</span>    
+        <span class="ruby-identifier">grid_widgets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Line</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dx</span>, <span class="ruby-identifier">first_y</span>, <span class="ruby-identifier">dx</span>, <span class="ruby-identifier">last_y</span>, <span class="ruby-identifier">color</span>) 
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">y_lines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">grid_y</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">dy</span> = <span class="ruby-identifier">draw_y</span>(<span class="ruby-identifier">grid_y</span>)
+        <span class="ruby-identifier">color</span> = <span class="ruby-ivar">@grid_line_color</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">grid_y</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">grid_y</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">bottom_y</span>.<span class="ruby-identifier">to_i</span>
+            <span class="ruby-identifier">color</span> = <span class="ruby-ivar">@zero_line_color</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">grid_widgets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Line</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">first_x</span>, <span class="ruby-identifier">dy</span>, <span class="ruby-identifier">last_x</span>, <span class="ruby-identifier">dy</span>, <span class="ruby-identifier">color</span>) 
+    <span class="ruby-keyword">end</span> 
+
+    <span class="ruby-identifier">grid_widgets</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">gw</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">gw</span>.<span class="ruby-identifier">draw</span> 
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-display_lines_for_point_set" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">display_lines_for_point_set</span><span
+            class="method-args">(points)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="display_lines_for_point_set-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2575</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display_lines_for_point_set</span>(<span class="ruby-identifier">points</span>) 
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">points</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">points</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">points</span>[<span class="ruby-value">0</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">last</span>, <span class="ruby-identifier">the_next</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">the_next</span>.<span class="ruby-identifier">x</span>
+                <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_line</span> <span class="ruby-identifier">last</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">last</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">last</span>.<span class="ruby-identifier">graphics_color</span>,
+                                <span class="ruby-identifier">the_next</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">the_next</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">last</span>.<span class="ruby-identifier">graphics_color</span>, <span class="ruby-identifier">relative_z_order</span>(<span class="ruby-constant">Z_ORDER_GRAPHIC_ELEMENTS</span>)
+            <span class="ruby-keyword">end</span>
+            <span class="ruby-identifier">the_next</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-draw_cursor_lines" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">draw_cursor_lines</span><span
+            class="method-args">(mouse_x, mouse_y)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="draw_cursor_lines-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2634</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_cursor_lines</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
+    <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_line</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-value">0</span>), <span class="ruby-ivar">@cursor_line_color</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-ivar">@height</span>), <span class="ruby-ivar">@cursor_line_color</span>, <span class="ruby-constant">Z_ORDER_GRAPHIC_ELEMENTS</span>
+    <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_line</span> <span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-value">0</span>), <span class="ruby-identifier">mouse_y</span>, <span class="ruby-ivar">@cursor_line_color</span>, <span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-ivar">@width</span>), <span class="ruby-identifier">mouse_y</span>, <span class="ruby-ivar">@cursor_line_color</span>, <span class="ruby-constant">Z_ORDER_GRAPHIC_ELEMENTS</span>
+    
+    <span class="ruby-comment"># Return the data values at this point, so the plotter can display them</span>
+    [<span class="ruby-identifier">get_x_data_val</span>(<span class="ruby-identifier">mouse_x</span>), <span class="ruby-identifier">get_y_data_val</span>(<span class="ruby-identifier">mouse_y</span>)]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-draw_x" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">draw_x</span><span
+            class="method-args">(x)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="draw_x-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2548</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_x</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">x_val_to_pixel</span>(<span class="ruby-identifier">x</span>)) 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-draw_y" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">draw_y</span><span
+            class="method-args">(y)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="draw_y-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2552</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_y</span>(<span class="ruby-identifier">y</span>)
+    <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">y_val_to_pixel</span>(<span class="ruby-identifier">y</span>)) 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-get_x_data_val" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">get_x_data_val</span><span
+            class="method-args">(mouse_x)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="get_x_data_val-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2620</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_x_data_val</span>(<span class="ruby-identifier">mouse_x</span>)
+    <span class="ruby-identifier">graph_x</span> = <span class="ruby-identifier">mouse_x</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@x</span>
+    <span class="ruby-identifier">x_pct</span> = (<span class="ruby-ivar">@width</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">graph_x</span>).<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@width</span>.<span class="ruby-identifier">to_f</span>
+    <span class="ruby-identifier">x_val</span> = <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">right_x</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">x_pct</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">x_range</span>)
+    <span class="ruby-identifier">x_val</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-get_y_data_val" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">get_y_data_val</span><span
+            class="method-args">(mouse_y)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="get_y_data_val-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2627</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_y_data_val</span>(<span class="ruby-identifier">mouse_y</span>)
+    <span class="ruby-identifier">graph_y</span> = <span class="ruby-identifier">mouse_y</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@y</span>
+    <span class="ruby-identifier">y_pct</span> = <span class="ruby-identifier">graph_y</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@height</span>.<span class="ruby-identifier">to_f</span>
+    <span class="ruby-identifier">y_val</span> = <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">top_y</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">y_pct</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">y_range</span>)
+    <span class="ruby-identifier">y_val</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-increase_data_point_size" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">increase_data_point_size</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="increase_data_point_size-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2453</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">increase_data_point_size</span>
+    <span class="ruby-ivar">@data_point_size</span> = <span class="ruby-ivar">@data_point_size</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-is_on_screen" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">is_on_screen</span><span
+            class="method-args">(point)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="is_on_screen-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2500</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">is_on_screen</span>(<span class="ruby-identifier">point</span>) 
+    <span class="ruby-identifier">point</span>.<span class="ruby-identifier">data_x</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">left_x</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">point</span>.<span class="ruby-identifier">data_x</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">right_x</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">point</span>.<span class="ruby-identifier">data_y</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">bottom_y</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">point</span>.<span class="ruby-identifier">data_y</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">top_y</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-range_set-3F" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">range_set?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="range_set-3F-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2496</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">range_set?</span>
+    <span class="ruby-keyword">not</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-remove_data_set" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">remove_data_set</span><span
+            class="method-args">(data_set_name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="remove_data_set-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2533</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove_data_set</span>(<span class="ruby-identifier">data_set_name</span>)
+    <span class="ruby-ivar">@points_by_data_set_name</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">data_set_name</span>)
+    <span class="ruby-ivar">@visibility_map</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">data_set_name</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-render" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">render</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="render-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2556</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span>
+    <span class="ruby-ivar">@points_by_data_set_name</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@visibility_map</span>[<span class="ruby-identifier">key</span>]
+            <span class="ruby-identifier">data_set_points</span> = <span class="ruby-ivar">@points_by_data_set_name</span>[<span class="ruby-identifier">key</span>]
+            <span class="ruby-identifier">data_set_points</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">point</span><span class="ruby-operator">|</span> 
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_on_screen</span>(<span class="ruby-identifier">point</span>)
+                    <span class="ruby-identifier">point</span>.<span class="ruby-identifier">render</span>(<span class="ruby-ivar">@data_point_size</span>)
+                <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">end</span> 
+            <span class="ruby-keyword">if</span> <span class="ruby-ivar">@display_lines</span> 
+                <span class="ruby-identifier">display_lines_for_point_set</span>(<span class="ruby-identifier">data_set_points</span>) 
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@display_grid</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">range_set?</span>
+            <span class="ruby-identifier">display_grid_lines</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-scroll_down" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">scroll_down</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="scroll_down-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2479</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_down</span>
+    <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scroll_down</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-scroll_left" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">scroll_left</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="scroll_left-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2487</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_left</span>
+    <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scroll_left</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-scroll_right" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">scroll_right</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="scroll_right-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2483</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_right</span>
+    <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scroll_right</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-scroll_up" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">scroll_up</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="scroll_up-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2475</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_up</span> 
+    <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scroll_up</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-toggle_visibility" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">toggle_visibility</span><span
+            class="method-args">(data_set_name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="toggle_visibility-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2445</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">toggle_visibility</span>(<span class="ruby-identifier">data_set_name</span>)
+    <span class="ruby-identifier">is_visible</span> = <span class="ruby-ivar">@visibility_map</span>[<span class="ruby-identifier">data_set_name</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_visible</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@visibility_map</span>[<span class="ruby-identifier">data_set_name</span>] = <span class="ruby-operator">!</span><span class="ruby-identifier">is_visible</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-x_val_to_pixel" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">x_val_to_pixel</span><span
+            class="method-args">(val)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="x_val_to_pixel-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2538</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">x_val_to_pixel</span>(<span class="ruby-identifier">val</span>)
+    <span class="ruby-identifier">x_pct</span> = (<span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">right_x</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">val</span>).<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">x_range</span> 
+    <span class="ruby-ivar">@width</span> <span class="ruby-operator">-</span> (<span class="ruby-ivar">@width</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">x_pct</span>).<span class="ruby-identifier">round</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-y_val_to_pixel" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">y_val_to_pixel</span><span
+            class="method-args">(val)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="y_val_to_pixel-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2543</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">y_val_to_pixel</span>(<span class="ruby-identifier">val</span>)
+    <span class="ruby-identifier">y_pct</span> = (<span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">top_y</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">val</span>).<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">y_range</span> 
+    (<span class="ruby-ivar">@height</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">y_pct</span>).<span class="ruby-identifier">round</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-zoom_in" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">zoom_in</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="zoom_in-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2468</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">zoom_in</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@zoom_level</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0.11</span>
+        <span class="ruby-ivar">@zoom_level</span> = <span class="ruby-ivar">@zoom_level</span> <span class="ruby-operator">-</span> <span class="ruby-value">0.15</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scale</span>(<span class="ruby-ivar">@zoom_level</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-zoom_out" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">zoom_out</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="zoom_out-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2463</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">zoom_out</span> 
+    <span class="ruby-ivar">@zoom_level</span> = <span class="ruby-ivar">@zoom_level</span> <span class="ruby-operator">+</span> <span class="ruby-value">0.15</span>
+    <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scale</span>(<span class="ruby-ivar">@zoom_level</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
