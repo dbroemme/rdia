@@ -126,8 +126,7 @@
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File samples/star_wars.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
-    <span class="ruby-keyword">super</span>(<span class="ruby-value">800</span>, <span class="ruby-value">800</span>, <span class="ruby-string">&quot;Wads Sample Star Wars App&quot;</span>)
-    <span class="ruby-identifier">set_display</span>(<span class="ruby-constant">StarWarsDisplay</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">process_star_wars_data</span>))
+    <span class="ruby-keyword">super</span>(<span class="ruby-value">800</span>, <span class="ruby-value">800</span>, <span class="ruby-string">&quot;Wads Sample Star Wars App&quot;</span>, <span class="ruby-constant">StarWarsDisplay</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">process_star_wars_data</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -153,7 +152,7 @@
           
 
           <div class="method-source-code" id="process_star_wars_data-source">
-            <pre><span class="ruby-comment"># File samples/star_wars.rb, line 16</span>
+            <pre><span class="ruby-comment"># File samples/star_wars.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">process_star_wars_data</span> 
     <span class="ruby-identifier">star_wars_json</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">STAR_WARS_DATA_FILE</span>)
     <span class="ruby-identifier">data_hash</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">star_wars_json</span>)

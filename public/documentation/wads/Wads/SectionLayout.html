@@ -88,7 +88,7 @@
 
   <section class="description">
     
-<p><a href="SectionLayout.html"><code>SectionLayout</code></a> is an intermediate class in the layout class hierarchy that is used to divide the visible screen into different sections. The commonly used sections include LAYOUT_TOP or LAYOUT_NORTH, LAYOUT_MIDDLE or LAYOUT_CENTER, LAYOUT_BOTTOM or LAYOUT_SOUTH, LAYOUT_LEFT or LAYOUT_WEST, LAYOUT_RIGHT or LAYOUT_EAST.</p>
+<p><a href="SectionLayout.html"><code>SectionLayout</code></a> is an intermediate class in the layout class hierarchy that is used to divide the visible screen into different sections. The commonly used sections include SECTION_TOP or SECTION_NORTH, SECTION_MIDDLE or SECTION_CENTER, SECTION_BOTTOM or SECTION_SOUTH, SECTION_LEFT or SECTION_WEST, SECTION_RIGHT or SECTION_EAST.</p>
 
   </section>
 
@@ -134,7 +134,7 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 663</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 787</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">parent_widget</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-keyword">super</span>
     <span class="ruby-ivar">@container_map</span> = {}
@@ -163,7 +163,7 @@
           <p>This is a convenience method that creates a panel divided into a left and right, or east and west section. It will take up the entire space of the specified  ARG_SECTION in the args map.</p>
 
           <div class="method-source-code" id="add_east_west_panel-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 690</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 814</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_east_west_panel</span>(<span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">section</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_SECTION</span>]
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">nil?</span>
@@ -195,7 +195,7 @@
           <p>Get the coordinates for the given element type. A generic map of parameters is accepted, however the  ARG_SECTION is required so the layout can determine which section or container is used.</p>
 
           <div class="method-source-code" id="get_coordinates-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 673</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 797</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_coordinates</span>(<span class="ruby-identifier">element_type</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">section</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_SECTION</span>]
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">nil?</span>

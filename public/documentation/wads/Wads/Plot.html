@@ -207,7 +207,7 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2429</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2603</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>) 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
     <span class="ruby-identifier">set_dimensions</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
@@ -247,7 +247,7 @@
           
 
           <div class="method-source-code" id="add_data_point-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2504</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2678</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_data_point</span>(<span class="ruby-identifier">data_set_name</span>, <span class="ruby-identifier">data_x</span>, <span class="ruby-identifier">data_y</span>, <span class="ruby-identifier">color</span> = <span class="ruby-constant">COLOR_MAROON</span>) 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">range_set?</span>
         <span class="ruby-identifier">rendered_points</span> = <span class="ruby-ivar">@points_by_data_set_name</span>[<span class="ruby-identifier">data_set_name</span>]
@@ -282,7 +282,7 @@
           
 
           <div class="method-source-code" id="add_data_set-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2522</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2696</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_data_set</span>(<span class="ruby-identifier">data_set_name</span>, <span class="ruby-identifier">rendered_points</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">range_set?</span>
         <span class="ruby-ivar">@points_by_data_set_name</span>[<span class="ruby-identifier">data_set_name</span>] = <span class="ruby-identifier">rendered_points</span>
@@ -310,7 +310,7 @@
           
 
           <div class="method-source-code" id="decrease_data_point_size-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2457</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2631</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decrease_data_point_size</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@data_point_size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>
         <span class="ruby-ivar">@data_point_size</span> = <span class="ruby-ivar">@data_point_size</span> <span class="ruby-operator">-</span> <span class="ruby-value">2</span>
@@ -333,7 +333,7 @@
           
 
           <div class="method-source-code" id="define_range-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2491</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2665</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">define_range</span>(<span class="ruby-identifier">range</span>)
     <span class="ruby-ivar">@visible_range</span> = <span class="ruby-identifier">range</span>
     <span class="ruby-ivar">@zoom_level</span> = <span class="ruby-value">1</span>
@@ -355,7 +355,7 @@
           
 
           <div class="method-source-code" id="display_grid_lines-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2587</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2761</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display_grid_lines</span>
     <span class="ruby-identifier">grid_widgets</span> = []
 
@@ -405,7 +405,7 @@
           
 
           <div class="method-source-code" id="display_lines_for_point_set-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2575</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2749</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display_lines_for_point_set</span>(<span class="ruby-identifier">points</span>) 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">points</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
         <span class="ruby-identifier">points</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">points</span>[<span class="ruby-value">0</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">last</span>, <span class="ruby-identifier">the_next</span><span class="ruby-operator">|</span>
@@ -434,7 +434,7 @@
           
 
           <div class="method-source-code" id="draw_cursor_lines-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2634</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2808</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_cursor_lines</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_line</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-value">0</span>), <span class="ruby-ivar">@cursor_line_color</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-ivar">@height</span>), <span class="ruby-ivar">@cursor_line_color</span>, <span class="ruby-constant">Z_ORDER_GRAPHIC_ELEMENTS</span>
     <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_line</span> <span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-value">0</span>), <span class="ruby-identifier">mouse_y</span>, <span class="ruby-ivar">@cursor_line_color</span>, <span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-ivar">@width</span>), <span class="ruby-identifier">mouse_y</span>, <span class="ruby-ivar">@cursor_line_color</span>, <span class="ruby-constant">Z_ORDER_GRAPHIC_ELEMENTS</span>
@@ -459,7 +459,7 @@
           
 
           <div class="method-source-code" id="draw_x-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2548</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2722</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_x</span>(<span class="ruby-identifier">x</span>)
     <span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">x_val_to_pixel</span>(<span class="ruby-identifier">x</span>)) 
 <span class="ruby-keyword">end</span></pre>
@@ -480,7 +480,7 @@
           
 
           <div class="method-source-code" id="draw_y-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2552</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2726</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_y</span>(<span class="ruby-identifier">y</span>)
     <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">y_val_to_pixel</span>(<span class="ruby-identifier">y</span>)) 
 <span class="ruby-keyword">end</span></pre>
@@ -501,7 +501,7 @@
           
 
           <div class="method-source-code" id="get_x_data_val-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2620</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2794</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_x_data_val</span>(<span class="ruby-identifier">mouse_x</span>)
     <span class="ruby-identifier">graph_x</span> = <span class="ruby-identifier">mouse_x</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@x</span>
     <span class="ruby-identifier">x_pct</span> = (<span class="ruby-ivar">@width</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">graph_x</span>).<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@width</span>.<span class="ruby-identifier">to_f</span>
@@ -525,7 +525,7 @@
           
 
           <div class="method-source-code" id="get_y_data_val-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2627</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2801</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_y_data_val</span>(<span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-identifier">graph_y</span> = <span class="ruby-identifier">mouse_y</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@y</span>
     <span class="ruby-identifier">y_pct</span> = <span class="ruby-identifier">graph_y</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@height</span>.<span class="ruby-identifier">to_f</span>
@@ -549,7 +549,7 @@
           
 
           <div class="method-source-code" id="increase_data_point_size-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2453</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2627</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">increase_data_point_size</span>
     <span class="ruby-ivar">@data_point_size</span> = <span class="ruby-ivar">@data_point_size</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>
 <span class="ruby-keyword">end</span></pre>
@@ -570,7 +570,7 @@
           
 
           <div class="method-source-code" id="is_on_screen-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2500</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2674</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">is_on_screen</span>(<span class="ruby-identifier">point</span>) 
     <span class="ruby-identifier">point</span>.<span class="ruby-identifier">data_x</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">left_x</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">point</span>.<span class="ruby-identifier">data_x</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">right_x</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">point</span>.<span class="ruby-identifier">data_y</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">bottom_y</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">point</span>.<span class="ruby-identifier">data_y</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">top_y</span>
 <span class="ruby-keyword">end</span></pre>
@@ -591,7 +591,7 @@
           
 
           <div class="method-source-code" id="range_set-3F-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2496</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2670</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">range_set?</span>
     <span class="ruby-keyword">not</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -612,7 +612,7 @@
           
 
           <div class="method-source-code" id="remove_data_set-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2533</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2707</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove_data_set</span>(<span class="ruby-identifier">data_set_name</span>)
     <span class="ruby-ivar">@points_by_data_set_name</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">data_set_name</span>)
     <span class="ruby-ivar">@visibility_map</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">data_set_name</span>)
@@ -634,7 +634,7 @@
           
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2556</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2730</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span>
     <span class="ruby-ivar">@points_by_data_set_name</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@visibility_map</span>[<span class="ruby-identifier">key</span>]
@@ -670,7 +670,7 @@
           
 
           <div class="method-source-code" id="scroll_down-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2479</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2653</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_down</span>
     <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scroll_down</span>
 <span class="ruby-keyword">end</span></pre>
@@ -691,7 +691,7 @@
           
 
           <div class="method-source-code" id="scroll_left-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2487</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2661</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_left</span>
     <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scroll_left</span>
 <span class="ruby-keyword">end</span></pre>
@@ -712,7 +712,7 @@
           
 
           <div class="method-source-code" id="scroll_right-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2483</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2657</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_right</span>
     <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scroll_right</span>
 <span class="ruby-keyword">end</span></pre>
@@ -733,7 +733,7 @@
           
 
           <div class="method-source-code" id="scroll_up-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2475</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2649</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_up</span> 
     <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scroll_up</span>
 <span class="ruby-keyword">end</span></pre>
@@ -754,7 +754,7 @@
           
 
           <div class="method-source-code" id="toggle_visibility-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2445</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2619</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">toggle_visibility</span>(<span class="ruby-identifier">data_set_name</span>)
     <span class="ruby-identifier">is_visible</span> = <span class="ruby-ivar">@visibility_map</span>[<span class="ruby-identifier">data_set_name</span>]
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_visible</span>.<span class="ruby-identifier">nil?</span>
@@ -779,7 +779,7 @@
           
 
           <div class="method-source-code" id="x_val_to_pixel-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2538</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2712</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">x_val_to_pixel</span>(<span class="ruby-identifier">val</span>)
     <span class="ruby-identifier">x_pct</span> = (<span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">right_x</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">val</span>).<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">x_range</span> 
     <span class="ruby-ivar">@width</span> <span class="ruby-operator">-</span> (<span class="ruby-ivar">@width</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">x_pct</span>).<span class="ruby-identifier">round</span>
@@ -801,7 +801,7 @@
           
 
           <div class="method-source-code" id="y_val_to_pixel-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2543</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2717</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">y_val_to_pixel</span>(<span class="ruby-identifier">val</span>)
     <span class="ruby-identifier">y_pct</span> = (<span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">top_y</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">val</span>).<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@visible_range</span>.<span class="ruby-identifier">y_range</span> 
     (<span class="ruby-ivar">@height</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">y_pct</span>).<span class="ruby-identifier">round</span>
@@ -823,7 +823,7 @@
           
 
           <div class="method-source-code" id="zoom_in-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2468</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2642</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">zoom_in</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@zoom_level</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0.11</span>
         <span class="ruby-ivar">@zoom_level</span> = <span class="ruby-ivar">@zoom_level</span> <span class="ruby-operator">-</span> <span class="ruby-value">0.15</span>
@@ -847,7 +847,7 @@
           
 
           <div class="method-source-code" id="zoom_out-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2463</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2637</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">zoom_out</span> 
     <span class="ruby-ivar">@zoom_level</span> = <span class="ruby-ivar">@zoom_level</span> <span class="ruby-operator">+</span> <span class="ruby-value">0.15</span>
     <span class="ruby-identifier">visible_range</span>.<span class="ruby-identifier">scale</span>(<span class="ruby-ivar">@zoom_level</span>)

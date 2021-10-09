@@ -105,7 +105,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(x, y)</span>
+            class="method-args">(x, y, args = {})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -117,9 +117,9 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1804</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>) 
-    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-string">&quot;ignore&quot;</span>, <span class="ruby-value">50</span>)
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1966</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">args</span> = {}) 
+    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-string">&quot;ignore&quot;</span>, {<span class="ruby-constant">ARG_DESIRED_WIDTH</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">50</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">set_dimensions</span>(<span class="ruby-value">14</span>, <span class="ruby-value">14</span>)
     <span class="ruby-identifier">add_child</span>(<span class="ruby-constant">Line</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@x</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-identifier">right_edge</span>, <span class="ruby-identifier">bottom_edge</span>, <span class="ruby-constant">COLOR_ERROR_CODE_RED</span>))
     <span class="ruby-identifier">add_child</span>(<span class="ruby-constant">Line</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@x</span>, <span class="ruby-identifier">bottom_edge</span>, <span class="ruby-identifier">right_edge</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-constant">COLOR_ERROR_CODE_RED</span>))
@@ -148,7 +148,7 @@
           
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1811</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1973</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span> 
     <span class="ruby-comment"># do nothing, just override the parent so we don&#39;t draw a label</span>
 <span class="ruby-keyword">end</span></pre>

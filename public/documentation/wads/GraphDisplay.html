@@ -114,17 +114,17 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File samples/graph.rb, line 50</span>
+            <pre><span class="ruby-comment"># File samples/graph.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">graph</span>)
     <span class="ruby-keyword">super</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">800</span>, <span class="ruby-value">600</span>)
     <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_TOP_MIDDLE_BOTTOM</span>)
     <span class="ruby-ivar">@graph</span> = <span class="ruby-identifier">graph</span>
 
-    <span class="ruby-identifier">image</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_image</span>(<span class="ruby-string">&quot;./media/Banner.png&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_TOP</span>})
+    <span class="ruby-identifier">image</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_image</span>(<span class="ruby-string">&quot;./media/Banner.png&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_TOP</span>})
     <span class="ruby-identifier">image</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;Wads Sample App&quot;</span>, <span class="ruby-value">10</span>, <span class="ruby-value">20</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span>)
     <span class="ruby-identifier">image</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-node">&quot;Version #{Wads::VERSION}&quot;</span>, <span class="ruby-value">13</span>, <span class="ruby-value">54</span>)
 
-    <span class="ruby-identifier">panel</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_horizontal_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_BOTTOM</span>})
+    <span class="ruby-identifier">panel</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_horizontal_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_BOTTOM</span>})
     <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Exit&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> <span class="ruby-value">30</span>) <span class="ruby-keyword">do</span>
         <span class="ruby-constant">WidgetResult</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">true</span>)
     <span class="ruby-keyword">end</span>
@@ -132,7 +132,7 @@
     <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">disable_border</span>
 
     <span class="ruby-ivar">@graph_display</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_graph_display</span>(<span class="ruby-ivar">@graph</span>, <span class="ruby-constant">GRAPH_DISPLAY_EXPLORER</span>,
-                                                  { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CENTER</span>})
+                                                  { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CENTER</span>})
     <span class="ruby-identifier">disable_border</span>
 <span class="ruby-keyword">end</span></pre>
           </div>

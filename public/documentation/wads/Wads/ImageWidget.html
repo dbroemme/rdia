@@ -132,7 +132,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(x, y, image)</span>
+            class="method-args">(x, y, image, args = {})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -144,8 +144,8 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1612</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">image</span>) 
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1761</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">image</span>, <span class="ruby-identifier">args</span> = {}) 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
         <span class="ruby-ivar">@img</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">image</span>)
@@ -153,6 +153,9 @@
         <span class="ruby-ivar">@img</span> = <span class="ruby-identifier">image</span> 
     <span class="ruby-keyword">else</span> 
         <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;ImageWidget requires either a filename or a Gosu::Image object&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+        <span class="ruby-ivar">@gui_theme</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@scale</span> = <span class="ruby-value">1</span>
     <span class="ruby-identifier">disable_border</span>
@@ -183,7 +186,7 @@
           
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1627</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1779</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span> 
     <span class="ruby-ivar">@img</span>.<span class="ruby-identifier">draw</span> <span class="ruby-ivar">@x</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-identifier">z_order</span>, <span class="ruby-ivar">@scale</span>, <span class="ruby-ivar">@scale</span>
 <span class="ruby-keyword">end</span></pre>
@@ -204,7 +207,7 @@
           
 
           <div class="method-source-code" id="widget_z-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1631</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1783</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">widget_z</span> 
     <span class="ruby-constant">Z_ORDER_FOCAL_ELEMENTS</span>
 <span class="ruby-keyword">end</span></pre>

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Wads::WidgetResult - RDoc Documentation</title>
+<title>class Wads::WadsAquaTheme - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -61,7 +61,7 @@
 <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  <p class="link"><a href="../Object.html">Object</a>
+  <p class="link"><a href="GuiTheme.html">Wads::GuiTheme</a>
 </div>
 
     
@@ -72,64 +72,26 @@
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    <li ><a href="#method-c-new">::new</a>
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
   </ul>
 </div>
 
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-Wads::WidgetResult">
-  <h1 id="class-Wads::WidgetResult" class="class">
-    class Wads::WidgetResult
+<main role="main" aria-labelledby="class-Wads::WadsAquaTheme">
+  <h1 id="class-Wads::WadsAquaTheme" class="class">
+    class Wads::WadsAquaTheme
   </h1>
 
   <section class="description">
     
-<p>A result object returned from handle methods that instructs the parent widget what to do. A <a href="WidgetResult.html#attribute-i-close_widget"><code>close_widget</code></a> value of true instructs the recipient to close either the overlay window or the entire app, based on the context of the receiver. In the case of a form being submitted, the action may be “OK” and the <a href="WidgetResult.html#attribute-i-form_data"><code>form_data</code></a> contains the information supplied by the user. <a href="WidgetResult.html"><code>WidgetResult</code></a> is intentionally generic so it can support a wide variety of use cases.</p>
-
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
 
 
 
-    <section class="attribute-method-details" class="method-section">
-      <header>
-        <h3>Attributes</h3>
-      </header>
-
-      <div id="attribute-i-action" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">action</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-close_widget" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">close_widget</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-form_data" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">form_data</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-    </section>
 
 
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
@@ -140,19 +102,28 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(close_widget = false, action = &quot;none&quot;, form_data = nil)</span>
+            class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
         <div class="method-description">
           
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="GuiTheme.html#method-c-new"><code>Wads::GuiTheme::new</code></a>
+            </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2117</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">close_widget</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">action</span> = <span class="ruby-string">&quot;none&quot;</span>, <span class="ruby-identifier">form_data</span> = <span class="ruby-keyword">nil</span>)
-    <span class="ruby-ivar">@close_widget</span> = <span class="ruby-identifier">close_widget</span> 
-    <span class="ruby-ivar">@action</span> = <span class="ruby-identifier">action</span> 
-    <span class="ruby-ivar">@form_data</span> = <span class="ruby-identifier">form_data</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 240</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> 
+    <span class="ruby-keyword">super</span>(<span class="ruby-constant">COLOR_WHITE</span>,                  <span class="ruby-comment"># text color</span>
+          <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Color</span>.<span class="ruby-identifier">argb</span>(<span class="ruby-value">0xff387CA3</span>), <span class="ruby-comment"># graphic elements</span>
+          <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Color</span>.<span class="ruby-identifier">argb</span>(<span class="ruby-value">0xff387CA3</span>), <span class="ruby-comment"># border color</span>
+          <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Color</span>.<span class="ruby-identifier">argb</span>(<span class="ruby-value">0xff52ADC8</span>), <span class="ruby-comment"># background</span>
+          <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Color</span>.<span class="ruby-identifier">argb</span>(<span class="ruby-value">0xff55C39E</span>), <span class="ruby-comment"># selected item</span>
+          <span class="ruby-keyword">true</span>,                         <span class="ruby-comment"># use icons</span>
+          <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">22</span>), <span class="ruby-comment"># regular font</span>
+          <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">38</span>, { <span class="ruby-value">:bold</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>})) <span class="ruby-comment"># large font</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

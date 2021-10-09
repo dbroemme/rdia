@@ -178,7 +178,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(window, font, x, y, original_text, default_width)</span>
+            class="method-args">(x, y, original_text, default_width)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -191,10 +191,12 @@
 
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">window</span>, <span class="ruby-identifier">font</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">original_text</span>, <span class="ruby-identifier">default_width</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">original_text</span>, <span class="ruby-identifier">default_width</span>)
   <span class="ruby-keyword">super</span>()
   
-  <span class="ruby-ivar">@window</span>, <span class="ruby-ivar">@font</span>, <span class="ruby-ivar">@x</span>, <span class="ruby-ivar">@y</span> = <span class="ruby-identifier">window</span>, <span class="ruby-identifier">font</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>
+  <span class="ruby-ivar">@x</span> = <span class="ruby-identifier">x</span>
+  <span class="ruby-ivar">@y</span> = <span class="ruby-identifier">y</span>
+  <span class="ruby-ivar">@font</span> = <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">current_theme</span>.<span class="ruby-identifier">font</span>
   <span class="ruby-ivar">@default_width</span> = <span class="ruby-identifier">default_width</span>
   <span class="ruby-ivar">@base_z</span> = <span class="ruby-value">0</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">original_text</span>
@@ -224,7 +226,7 @@
           
 
           <div class="method-source-code" id="button_down-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">button_down</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">MsLeft</span>
     <span class="ruby-identifier">move_caret</span>(<span class="ruby-identifier">mouse_x</span>)
@@ -254,7 +256,7 @@
           
 
           <div class="method-source-code" id="button_up-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 111</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 113</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">button_up</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
   <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -275,7 +277,7 @@
           
 
           <div class="method-source-code" id="contains_click-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 81</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">contains_click</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
   <span class="ruby-identifier">under_point?</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -296,19 +298,19 @@
           
 
           <div class="method-source-code" id="draw-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 27</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw</span>
   <span class="ruby-comment"># Depending on whether this is the currently selected input or not, change the</span>
   <span class="ruby-comment"># background&#39;s color.</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">text_input</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">then</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_window</span>.<span class="ruby-identifier">text_input</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">then</span>
     <span class="ruby-identifier">background_color</span> = <span class="ruby-constant">ACTIVE_COLOR</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">background_color</span> = <span class="ruby-constant">INACTIVE_COLOR</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">draw_quad</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span>,         <span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span>,          <span class="ruby-identifier">background_color</span>,
-                    <span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span>,          <span class="ruby-identifier">background_color</span>,
-                    <span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span>,         <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span>, <span class="ruby-identifier">background_color</span>,
-                    <span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span>, <span class="ruby-identifier">background_color</span>, <span class="ruby-ivar">@base_z</span> <span class="ruby-operator">+</span> <span class="ruby-value">9</span>)
+  <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_window</span>.<span class="ruby-identifier">draw_quad</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span>,         <span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span>,          <span class="ruby-identifier">background_color</span>,
+                                           <span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span>,          <span class="ruby-identifier">background_color</span>,
+                                           <span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span>,         <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span>, <span class="ruby-identifier">background_color</span>,
+                                           <span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span>, <span class="ruby-identifier">background_color</span>, <span class="ruby-ivar">@base_z</span> <span class="ruby-operator">+</span> <span class="ruby-value">9</span>)
   
   <span class="ruby-comment"># Calculate the position of the caret and the selection start.</span>
   <span class="ruby-identifier">pos_x</span> = <span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@font</span>.<span class="ruby-identifier">text_width</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">text</span>[<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">caret_pos</span>])
@@ -316,15 +318,15 @@
   
   <span class="ruby-comment"># Draw the selection background, if any; if not, sel_x and pos_x will be</span>
   <span class="ruby-comment"># the same value, making this quad empty.</span>
-  <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">draw_quad</span>(<span class="ruby-identifier">sel_x</span>, <span class="ruby-identifier">y</span>,          <span class="ruby-constant">SELECTION_COLOR</span>,
-                    <span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">y</span>,          <span class="ruby-constant">SELECTION_COLOR</span>,
-                    <span class="ruby-identifier">sel_x</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span>, <span class="ruby-constant">SELECTION_COLOR</span>,
-                    <span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span>, <span class="ruby-constant">SELECTION_COLOR</span>, <span class="ruby-ivar">@base_z</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>)
+  <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_window</span>.<span class="ruby-identifier">draw_quad</span>(<span class="ruby-identifier">sel_x</span>, <span class="ruby-identifier">y</span>,          <span class="ruby-constant">SELECTION_COLOR</span>,
+                                           <span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">y</span>,          <span class="ruby-constant">SELECTION_COLOR</span>,
+                                           <span class="ruby-identifier">sel_x</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span>, <span class="ruby-constant">SELECTION_COLOR</span>,
+                                           <span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span>, <span class="ruby-constant">SELECTION_COLOR</span>, <span class="ruby-ivar">@base_z</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>)
 
   <span class="ruby-comment"># Draw the caret; again, only if this is the currently selected field.</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">text_input</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">then</span>
-    <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">draw_line</span>(<span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">y</span>,          <span class="ruby-constant">CARET_COLOR</span>,
-                      <span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span>, <span class="ruby-constant">CARET_COLOR</span>, <span class="ruby-ivar">@base_z</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_window</span>.<span class="ruby-identifier">text_input</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_window</span>.<span class="ruby-identifier">draw_line</span>(<span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">y</span>,          <span class="ruby-constant">CARET_COLOR</span>,
+                                             <span class="ruby-identifier">pos_x</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span>, <span class="ruby-constant">CARET_COLOR</span>, <span class="ruby-ivar">@base_z</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>)
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-comment"># Finally, draw the text itself!</span>
@@ -347,7 +349,7 @@
           
 
           <div class="method-source-code" id="handle_key_press-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 127</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_key_press</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -368,7 +370,7 @@
           
 
           <div class="method-source-code" id="handle_mouse_down-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 119</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_mouse_down</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
   <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -389,7 +391,7 @@
           
 
           <div class="method-source-code" id="handle_mouse_up-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 123</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 125</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_mouse_up</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -410,7 +412,7 @@
           
 
           <div class="method-source-code" id="handle_update-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_update</span> <span class="ruby-identifier">update_count</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -431,7 +433,7 @@
           
 
           <div class="method-source-code" id="height-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 71</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">height</span>
   <span class="ruby-ivar">@font</span>.<span class="ruby-identifier">height</span>
 <span class="ruby-keyword">end</span></pre>
@@ -452,7 +454,7 @@
           <p>Tries to move the caret to the position specifies by mouse_x</p>
 
           <div class="method-source-code" id="move_caret-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 86</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 88</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_caret</span>(<span class="ruby-identifier">mouse_x</span>)
   <span class="ruby-comment"># Test character by character</span>
   <span class="ruby-value">1</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">text</span>.<span class="ruby-identifier">length</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -481,7 +483,7 @@
           <p>Hit-test for selecting a text field with the mouse.</p>
 
           <div class="method-source-code" id="under_point-3F-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 76</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">under_point?</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
   <span class="ruby-identifier">mouse_x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">mouse_x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">width</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span> <span class="ruby-keyword">and</span>
     <span class="ruby-identifier">mouse_y</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-constant">PADDING</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">mouse_y</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span> <span class="ruby-operator">+</span> <span class="ruby-constant">PADDING</span>
@@ -503,7 +505,7 @@
           
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 115</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 117</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">update_count</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
   <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -524,7 +526,7 @@
           <p>This text field grows with the text that&#39;s being entered. (Usually one would use clip_to and scroll around on the text field.)</p>
 
           <div class="method-source-code" id="width-source">
-            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 63</span>
+            <pre><span class="ruby-comment"># File lib/wads/textinput.rb, line 65</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">width</span>
   <span class="ruby-identifier">text_width</span> = <span class="ruby-ivar">@font</span>.<span class="ruby-identifier">text_width</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">text</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">text_width</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@default_width</span>

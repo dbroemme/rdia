@@ -197,7 +197,7 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2784</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2958</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">graph</span>, <span class="ruby-identifier">display_mode</span> = <span class="ruby-constant">GRAPH_DISPLAY_ALL</span>) 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
     <span class="ruby-identifier">set_dimensions</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
@@ -245,7 +245,7 @@
           
 
           <div class="method-source-code" id="get_node_color-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3035</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3209</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_node_color</span>(<span class="ruby-identifier">node</span>)
     <span class="ruby-identifier">color_tag</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">get_tag</span>(<span class="ruby-constant">COLOR_TAG</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">color_tag</span>.<span class="ruby-identifier">nil?</span> 
@@ -270,7 +270,7 @@
           
 
           <div class="method-source-code" id="handle_mouse_down-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2815</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2989</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_mouse_down</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># check to see if any node was selected</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@rendered_nodes</span>
@@ -302,7 +302,7 @@
           
 
           <div class="method-source-code" id="handle_mouse_up-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2830</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3004</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_mouse_up</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@selected_node</span> 
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@is_explorer</span>
@@ -333,7 +333,7 @@
           
 
           <div class="method-source-code" id="handle_update-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2808</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2982</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_update</span> <span class="ruby-identifier">update_count</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">contains_click</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>) <span class="ruby-keyword">and</span> <span class="ruby-ivar">@selected_node</span> 
         <span class="ruby-ivar">@selected_node</span>.<span class="ruby-identifier">move_recursive_absolute</span>(<span class="ruby-identifier">mouse_x</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@selected_node_x_offset</span>,
@@ -357,7 +357,7 @@
           
 
           <div class="method-source-code" id="move_text_for_node-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2936</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3110</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_text_for_node</span>(<span class="ruby-identifier">rendered_node</span>)
     <span class="ruby-identifier">text</span> = <span class="ruby-identifier">rendered_node</span>.<span class="ruby-identifier">get_text_widget</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span> 
@@ -412,7 +412,7 @@
           
 
           <div class="method-source-code" id="overlaps_with_a_node-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2974</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">overlaps_with_a_node</span>(<span class="ruby-identifier">text</span>)
     <span class="ruby-ivar">@rendered_nodes</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rn</span><span class="ruby-operator">|</span> 
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">label</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">rn</span>.<span class="ruby-identifier">label</span> 
@@ -442,7 +442,7 @@
           
 
           <div class="method-source-code" id="populate_rendered_nodes-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3067</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3241</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">populate_rendered_nodes</span>(<span class="ruby-identifier">center_node</span> = <span class="ruby-keyword">nil</span>)
     <span class="ruby-comment"># Spread out the other nodes around the center node</span>
     <span class="ruby-comment"># going in a circle at each depth level</span>
@@ -570,7 +570,7 @@
           
 
           <div class="method-source-code" id="prevent_text_overlap-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2913</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3087</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">prevent_text_overlap</span> 
     <span class="ruby-ivar">@rendered_nodes</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rn</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">text</span> = <span class="ruby-identifier">rn</span>.<span class="ruby-identifier">get_text_widget</span>
@@ -610,7 +610,7 @@
           
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3178</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3352</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@rendered_nodes</span>
         <span class="ruby-ivar">@rendered_nodes</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">vn</span><span class="ruby-operator">|</span>
@@ -660,7 +660,7 @@
           
 
           <div class="method-source-code" id="scale_node_size-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2893</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3067</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scale_node_size</span> 
     <span class="ruby-identifier">range</span> = <span class="ruby-ivar">@graph</span>.<span class="ruby-identifier">get_number_of_connections_range</span>
     <span class="ruby-comment"># There are six colors. Any number of scale sizes</span>
@@ -697,7 +697,7 @@
           
 
           <div class="method-source-code" id="set_all_nodes_for_display-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3025</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3199</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_all_nodes_for_display</span> 
     <span class="ruby-ivar">@visible_data_nodes</span> = <span class="ruby-ivar">@graph</span>.<span class="ruby-identifier">node_map</span>
     <span class="ruby-ivar">@rendered_nodes</span> = {}
@@ -724,7 +724,7 @@
           
 
           <div class="method-source-code" id="set_center_node-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3043</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3217</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_center_node</span>(<span class="ruby-identifier">center_node</span>, <span class="ruby-identifier">max_depth</span> = <span class="ruby-value">-1</span>)
     <span class="ruby-comment"># Determine the list of nodes to draw</span>
     <span class="ruby-ivar">@graph</span>.<span class="ruby-identifier">reset_visited</span> 
@@ -765,7 +765,7 @@
           
 
           <div class="method-source-code" id="set_explorer_display-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2844</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3018</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_explorer_display</span>(<span class="ruby-identifier">center_node</span> = <span class="ruby-keyword">nil</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">center_node</span>.<span class="ruby-identifier">nil?</span> 
         <span class="ruby-comment"># If not specified, pick a center node as the one with the most connections</span>
@@ -803,7 +803,7 @@
           
 
           <div class="method-source-code" id="set_tree_display-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2865</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3039</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_tree_display</span>
     <span class="ruby-ivar">@graph</span>.<span class="ruby-identifier">reset_visited</span>
     <span class="ruby-ivar">@visible_data_nodes</span> = <span class="ruby-ivar">@graph</span>.<span class="ruby-identifier">node_map</span>
@@ -848,7 +848,7 @@
           
 
           <div class="method-source-code" id="set_tree_recursive-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2987</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 3161</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_tree_recursive</span>(<span class="ruby-identifier">current_node</span>, <span class="ruby-identifier">start_x</span>, <span class="ruby-identifier">end_x</span>, <span class="ruby-identifier">y_level</span>)
     <span class="ruby-comment"># Draw the current node, and then recursively divide up</span>
     <span class="ruby-comment"># and call again for each of the children</span>

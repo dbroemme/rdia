@@ -110,7 +110,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(width, height, caption = &#39;My App&#39;)</span>
+            class="method-args">(width, height, caption, widget)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -123,10 +123,13 @@
 
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/wads/app.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">caption</span> = <span class="ruby-string">&#39;My App&#39;</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">caption</span>, <span class="ruby-identifier">widget</span>)
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
     <span class="ruby-keyword">self</span>.<span class="ruby-identifier">caption</span> = <span class="ruby-identifier">caption</span>
     <span class="ruby-ivar">@update_count</span> = <span class="ruby-value">0</span>
+    <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">set_window</span>(<span class="ruby-keyword">self</span>)
+    <span class="ruby-identifier">set_display</span>(<span class="ruby-identifier">widget</span>) 
+    <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">set_log_level</span>(<span class="ruby-string">&quot;info&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -222,7 +225,7 @@
           
 
           <div class="method-source-code" id="get_display-source">
-            <pre><span class="ruby-comment"># File lib/wads/app.rb, line 26</span>
+            <pre><span class="ruby-comment"># File lib/wads/app.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_display</span>
     <span class="ruby-ivar">@main_widget</span>
 <span class="ruby-keyword">end</span></pre>
@@ -243,7 +246,7 @@
           <p>This method must be invoked with any <a href="Widget.html"><code>Wads::Widget</code></a> instance. It then handles delegating all events and drawing all child widgets.</p>
 
           <div class="method-source-code" id="set_display-source">
-            <pre><span class="ruby-comment"># File lib/wads/app.rb, line 22</span>
+            <pre><span class="ruby-comment"># File lib/wads/app.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_display</span>(<span class="ruby-identifier">widget</span>) 
     <span class="ruby-ivar">@main_widget</span> = <span class="ruby-identifier">widget</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -264,11 +267,8 @@
           
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/wads/app.rb, line 30</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span> 
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@main_widget</span>.<span class="ruby-identifier">nil?</span> 
-        <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Your app must call the set_display(widget) method in your constructor&quot;</span>
-    <span class="ruby-keyword">end</span>
+            <pre><span class="ruby-comment"># File lib/wads/app.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>
     <span class="ruby-ivar">@main_widget</span>.<span class="ruby-identifier">update</span>(<span class="ruby-ivar">@update_count</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-ivar">@update_count</span> = <span class="ruby-ivar">@update_count</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>

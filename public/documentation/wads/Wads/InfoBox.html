@@ -103,7 +103,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(x, y, width, height, title, content)</span>
+            class="method-args">(x, y, width, height, title, content, args = {})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -115,11 +115,14 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1843</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">title</span>, <span class="ruby-identifier">content</span>) 
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2008</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">title</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">args</span> = {}) 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>) 
     <span class="ruby-identifier">set_dimensions</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
     <span class="ruby-ivar">@base_z</span> = <span class="ruby-value">10</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+        <span class="ruby-ivar">@gui_theme</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+    <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">add_text</span>(<span class="ruby-identifier">title</span>, <span class="ruby-value">5</span>, <span class="ruby-value">5</span>)
     <span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">content</span>, <span class="ruby-value">5</span>, <span class="ruby-value">52</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> <span class="ruby-value">52</span>)
     <span class="ruby-identifier">ok_button</span> = <span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;OK&quot;</span>, (<span class="ruby-ivar">@width</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>) <span class="ruby-operator">-</span> <span class="ruby-value">50</span>, <span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> <span class="ruby-value">26</span>) <span class="ruby-keyword">do</span>
@@ -151,7 +154,7 @@
           
 
           <div class="method-source-code" id="handle_key_press-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1855</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2023</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_key_press</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">KbEscape</span>
         <span class="ruby-keyword">return</span> <span class="ruby-constant">WidgetResult</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">true</span>) 

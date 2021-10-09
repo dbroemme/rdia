@@ -61,7 +61,7 @@
 <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  <p class="link">Object
+  <p class="link"><a href="../Object.html">Object</a>
 </div>
 
     
@@ -83,10 +83,12 @@
     <li ><a href="#method-i-add_image">#add_image</a>
     <li ><a href="#method-i-add_multi_select_table">#add_multi_select_table</a>
     <li ><a href="#method-i-add_overlay">#add_overlay</a>
+    <li ><a href="#method-i-add_panel">#add_panel</a>
     <li ><a href="#method-i-add_plot">#add_plot</a>
     <li ><a href="#method-i-add_single_select_table">#add_single_select_table</a>
     <li ><a href="#method-i-add_table">#add_table</a>
     <li ><a href="#method-i-add_text">#add_text</a>
+    <li ><a href="#method-i-border_color">#border_color</a>
     <li ><a href="#method-i-bottom_edge">#bottom_edge</a>
     <li ><a href="#method-i-button_down">#button_down</a>
     <li ><a href="#method-i-button_up">#button_up</a>
@@ -126,10 +128,12 @@
     <li ><a href="#method-i-remove_children_by_type">#remove_children_by_type</a>
     <li ><a href="#method-i-render">#render</a>
     <li ><a href="#method-i-right_edge">#right_edge</a>
+    <li ><a href="#method-i-selection_color">#selection_color</a>
     <li ><a href="#method-i-set_absolute_position">#set_absolute_position</a>
     <li ><a href="#method-i-set_dimensions">#set_dimensions</a>
     <li ><a href="#method-i-set_layout">#set_layout</a>
     <li ><a href="#method-i-set_selected">#set_selected</a>
+    <li ><a href="#method-i-set_theme">#set_theme</a>
     <li ><a href="#method-i-text_color">#text_color</a>
     <li ><a href="#method-i-top_edge">#top_edge</a>
     <li ><a href="#method-i-unset_selected">#unset_selected</a>
@@ -156,24 +160,6 @@
 <p>The base class for all widgets. This class provides basic functionality for all gui widgets including maintaining the coordinates and layout used. A widget has a border and background, whose colors are defined by the theme. These can be turned off using the <a href="Widget.html#method-i-disable_border"><code>disable_border</code></a> and <a href="Widget.html#method-i-disable_background"><code>disable_background</code></a> methods. Widgets support a hierarchy of visible elements on the screen. For example, a parent widget may be a form, and it may contain many child widgets such as text labels, input fields, and a submit button. You can add children to a  widget using the add or <a href="Widget.html#method-i-add_child"><code>add_child</code></a> methods. Children are automatically rendered so any child does not need an explicit call to its draw or render method. Children can be placed with x, y positioning relative to their parent for convenience (see the <a href="Widget.html#method-i-relative_x"><code>relative_x</code></a> and <a href="Widget.html#method-i-relative_y"><code>relative_y</code></a> methods).</p>
 
 <p>The draw and update methods are used by their Gosu counterparts. Typically there is one parent <a href="../Wads.html"><code>Wads</code></a> widget used by a Gosu app, and it controls drawing all of the child widgets, invoking update on all widgets, and delegating user events. Widgets can override a render method for any specific drawing logic. It is worth showing the draw method here to amplify the point. You do not need to specifically call draw or render on any children. If you want to manage GUI elements outside of the widget hierarchy, then render is the best place to do it.</p>
-
-<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw</span> 
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@visible</span> 
-    <span class="ruby-identifier">render</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@is_selected</span>
-      <span class="ruby-identifier">draw_background</span>(<span class="ruby-constant">Z_ORDER_SELECTION_BACKGROUND</span>, <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">selection_color</span>)
-    <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@show_background</span>
-      <span class="ruby-identifier">draw_background</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@show_border</span>
-      <span class="ruby-identifier">draw_border</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span> 
-      <span class="ruby-identifier">child</span>.<span class="ruby-identifier">draw</span> 
-    <span class="ruby-keyword">end</span> 
-  <span class="ruby-keyword">end</span> 
-<span class="ruby-keyword">end</span>
-</pre>
 
 <p>Likewise, the update method recursively calls the <a href="Widget.html#method-i-handle_update"><code>handle_update</code></a> method on all children in this widget&#39;s hierarchy.</p>
 
@@ -270,6 +256,16 @@
         
         </div>
       </div>
+      <div id="attribute-i-text_input_fields" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">text_input_fields</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
       <div id="attribute-i-visible" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">visible</span><span
@@ -321,7 +317,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(x, y, width = 10, height = 10, layout = nil)</span>
+            class="method-args">(x, y, width = 10, height = 10, layout = nil, theme = nil)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -329,8 +325,8 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 906</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span> = <span class="ruby-value">10</span>, <span class="ruby-identifier">height</span> = <span class="ruby-value">10</span>, <span class="ruby-identifier">layout</span> = <span class="ruby-keyword">nil</span>) 
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1014</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span> = <span class="ruby-value">10</span>, <span class="ruby-identifier">height</span> = <span class="ruby-value">10</span>, <span class="ruby-identifier">layout</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">theme</span> = <span class="ruby-keyword">nil</span>) 
     <span class="ruby-identifier">set_absolute_position</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)  
     <span class="ruby-identifier">set_dimensions</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
     <span class="ruby-ivar">@base_z</span> = <span class="ruby-value">0</span>
@@ -341,12 +337,17 @@
             <span class="ruby-ivar">@layout</span> = <span class="ruby-identifier">layout</span>
         <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-ivar">@gui_theme</span> = <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">current_theme</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">theme</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-ivar">@gui_theme</span> = <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">current_theme</span>
+    <span class="ruby-keyword">else</span> 
+        <span class="ruby-ivar">@gui_theme</span> = <span class="ruby-identifier">theme</span> 
+    <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@visible</span> = <span class="ruby-keyword">true</span> 
     <span class="ruby-ivar">@children</span> = []
     <span class="ruby-ivar">@show_background</span> = <span class="ruby-keyword">true</span>
     <span class="ruby-ivar">@show_border</span> = <span class="ruby-keyword">true</span> 
     <span class="ruby-ivar">@is_selected</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-ivar">@text_input_fields</span> = []
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -372,7 +373,7 @@
           <p>Add a child widget that will automatically be drawn by this widget and will received delegated events. This is an alias for <a href="Widget.html#method-i-add_child"><code>add_child</code></a></p>
 
           <div class="method-source-code" id="add-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1010</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1140</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add</span>(<span class="ruby-identifier">child</span>) 
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">child</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -393,10 +394,11 @@
           <p>Add child axis lines widget using x, y positioning relative to this widget.</p>
 
           <div class="method-source-code" id="add_axis_lines-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1476</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1623</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_axis_lines</span>(<span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
     <span class="ruby-identifier">new_axis_lines</span> = <span class="ruby-constant">AxisLines</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>), <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>) 
     <span class="ruby-identifier">new_axis_lines</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_axis_lines</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_axis_lines</span>)
     <span class="ruby-identifier">new_axis_lines</span>
 <span class="ruby-keyword">end</span></pre>
@@ -414,19 +416,25 @@
         </div>
 
         <div class="method-description">
-          <p>Add a child button widget using x, y positioning relative to this widget. The width of the button will be determined based on the label text unless specified in the optional parameter. The code to execute is provided as a block, as shown in the example below. <a href="Widget.html#method-i-add_button"><code>add_button</code></a>(“Test Button”, 10, 10) do </p>
+          <p>Add a child button widget using x, y positioning relative to this widget. The width of the button will be determined based on the label text unless specified in the optional parameter. The code to execute is provided as a block, as shown in the example below.</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;User hit the test button&quot;</span>
+<pre class="ruby"><span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Test Button&quot;</span>, <span class="ruby-value">10</span>, <span class="ruby-value">10</span>) <span class="ruby-keyword">do</span> 
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;User hit the test button&quot;</span>
+<span class="ruby-keyword">end</span>
 </pre>
 
-<p>end</p>
-
           <div class="method-source-code" id="add_button-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1398</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1534</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_button</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-identifier">width</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-    <span class="ruby-identifier">new_button</span> = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>), <span class="ruby-identifier">label</span>, <span class="ruby-identifier">width</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">width</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">args</span> = {}
+    <span class="ruby-keyword">else</span> 
+        <span class="ruby-identifier">args</span> = { <span class="ruby-constant">ARG_DESIRED_WIDTH</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">width</span> }
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">new_button</span> = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>), <span class="ruby-identifier">label</span>, <span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">new_button</span>.<span class="ruby-identifier">set_action</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
     <span class="ruby-identifier">new_button</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_button</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_button</span>)
     <span class="ruby-identifier">new_button</span>
 <span class="ruby-keyword">end</span></pre>
@@ -447,7 +455,7 @@
           <p>Add a child widget that will automatically be drawn by this widget and will received delegated events.</p>
 
           <div class="method-source-code" id="add_child-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1018</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1148</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_child</span>(<span class="ruby-identifier">child</span>) 
     <span class="ruby-ivar">@children</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">child</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -468,11 +476,12 @@
           <p>Add a child delete button widget using x, y positioning relative to this widget. A delete button is a regular button that is rendered as a red X, instead of a text label.</p>
 
           <div class="method-source-code" id="add_delete_button-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1410</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1552</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_delete_button</span>(<span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
     <span class="ruby-identifier">new_delete_button</span> = <span class="ruby-constant">DeleteButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>))
     <span class="ruby-identifier">new_delete_button</span>.<span class="ruby-identifier">set_action</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
     <span class="ruby-identifier">new_delete_button</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_delete_button</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_delete_button</span>)
     <span class="ruby-identifier">new_delete_button</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -493,12 +502,13 @@
           <p>Add a child document widget using x, y positioning relative to this widget</p>
 
           <div class="method-source-code" id="add_document-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1381</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1516</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_document</span>(<span class="ruby-identifier">content</span>, <span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
     <span class="ruby-identifier">new_doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>),
                            <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>,
                            <span class="ruby-identifier">content</span>)
     <span class="ruby-identifier">new_doc</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_doc</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_doc</span>)
     <span class="ruby-identifier">new_doc</span>
 <span class="ruby-keyword">end</span></pre>
@@ -519,7 +529,7 @@
           <p>Add a child graph display widget using x, y positioning relative to this widget.</p>
 
           <div class="method-source-code" id="add_graph_display-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1456</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1602</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_graph_display</span>(<span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">graph</span>)
     <span class="ruby-identifier">new_graph</span> = <span class="ruby-constant">GraphWidget</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>), <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">graph</span>) 
     <span class="ruby-identifier">new_graph</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
@@ -543,10 +553,11 @@
           <p>Add a child image widget using x, y positioning relative to this widget.</p>
 
           <div class="method-source-code" id="add_image-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1486</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1634</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_image</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>)
     <span class="ruby-identifier">new_image</span> = <span class="ruby-constant">ImageWidget</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>), <span class="ruby-identifier">img</span>)
     <span class="ruby-identifier">new_image</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_image</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_image</span>)
     <span class="ruby-identifier">new_image</span>
 <span class="ruby-keyword">end</span></pre>
@@ -567,11 +578,12 @@
           <p>Add a child table widget using x, y positioning relative to this widget. The user can zero to many items in the table.</p>
 
           <div class="method-source-code" id="add_multi_select_table-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1445</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1590</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_multi_select_table</span>(<span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">max_visible_rows</span> = <span class="ruby-value">10</span>)
     <span class="ruby-identifier">new_table</span> = <span class="ruby-constant">MultiSelectTable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>),
                       <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">max_visible_rows</span>)
     <span class="ruby-identifier">new_table</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_table</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_table</span>)
     <span class="ruby-identifier">new_table</span>
 <span class="ruby-keyword">end</span></pre>
@@ -592,11 +604,33 @@
           <p>Add an overlay widget that is drawn on top of (at a higher z level) this widget</p>
 
           <div class="method-source-code" id="add_overlay-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1496</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1645</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_overlay</span>(<span class="ruby-identifier">overlay</span>)
     <span class="ruby-identifier">overlay</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">overlay</span>)
     <span class="ruby-ivar">@overlay_widget</span> = <span class="ruby-identifier">overlay</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-add_panel" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">add_panel</span><span
+            class="method-args">(section, args = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="add_panel-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1079</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_panel</span>(<span class="ruby-identifier">section</span>, <span class="ruby-identifier">args</span> = {})
+    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">section</span>,
+                               <span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@gui_theme</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -615,10 +649,11 @@
           <p>Add a child plot display widget using x, y positioning relative to this widget.</p>
 
           <div class="method-source-code" id="add_plot-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1466</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1612</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_plot</span>(<span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
     <span class="ruby-identifier">new_plot</span> = <span class="ruby-constant">Plot</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>), <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>) 
     <span class="ruby-identifier">new_plot</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_plot</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_plot</span>)
     <span class="ruby-identifier">new_plot</span>
 <span class="ruby-keyword">end</span></pre>
@@ -639,11 +674,12 @@
           <p>Add a child table widget using x, y positioning relative to this widget. The user can select up to one and only one item in the table.</p>
 
           <div class="method-source-code" id="add_single_select_table-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1433</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1577</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_single_select_table</span>(<span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">max_visible_rows</span> = <span class="ruby-value">10</span>)
     <span class="ruby-identifier">new_table</span> = <span class="ruby-constant">SingleSelectTable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>),
                       <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">max_visible_rows</span>)
     <span class="ruby-identifier">new_table</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_table</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_table</span>)
     <span class="ruby-identifier">new_table</span>
 <span class="ruby-keyword">end</span></pre>
@@ -664,11 +700,12 @@
           <p>Add a child table widget using x, y positioning relative to this widget.</p>
 
           <div class="method-source-code" id="add_table-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1421</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1564</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_table</span>(<span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">max_visible_rows</span> = <span class="ruby-value">10</span>)
     <span class="ruby-identifier">new_table</span> = <span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>),
                       <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">max_visible_rows</span>)
     <span class="ruby-identifier">new_table</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_table</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_table</span>)
     <span class="ruby-identifier">new_table</span>
 <span class="ruby-keyword">end</span></pre>
@@ -689,12 +726,35 @@
           <p>Add a child text widget using x, y positioning relative to this widget</p>
 
           <div class="method-source-code" id="add_text-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1371</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1504</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_text</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">rel_x</span>, <span class="ruby-identifier">rel_y</span>, <span class="ruby-identifier">color</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">use_large_font</span> = <span class="ruby-keyword">false</span>)
-    <span class="ruby-identifier">new_text</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>), <span class="ruby-identifier">message</span>, <span class="ruby-identifier">color</span>, <span class="ruby-identifier">use_large_font</span>)
+    <span class="ruby-identifier">new_text</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">rel_x</span>), <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">rel_y</span>), <span class="ruby-identifier">message</span>,
+                                          { <span class="ruby-constant">ARG_COLOR</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">color</span>, <span class="ruby-constant">ARG_USE_LARGE_FONT</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">use_large_font</span>})
     <span class="ruby-identifier">new_text</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@base_z</span>
+    <span class="ruby-identifier">new_text</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-ivar">@gui_theme</span>
     <span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_text</span>)
     <span class="ruby-identifier">new_text</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-border_color" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">border_color</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="border_color-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1118</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">border_color</span> 
+    <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">border_color</span> 
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -713,7 +773,7 @@
           <p>A convenience method to return the bottom y coordinate of this widget</p>
 
           <div class="method-source-code" id="bottom_edge-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1114</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1244</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">bottom_edge</span>
     <span class="ruby-ivar">@y</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@height</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
@@ -739,7 +799,7 @@
 </pre>
 
           <div class="method-source-code" id="button_down-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1266</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1391</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">button_down</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@overlay_widget</span> 
         <span class="ruby-identifier">result</span> = <span class="ruby-ivar">@overlay_widget</span>.<span class="ruby-identifier">button_down</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
@@ -756,6 +816,14 @@
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">MsLeft</span>
+        <span class="ruby-comment"># Special handling for text input fields</span>
+        <span class="ruby-comment"># Mouse click: Select text field based on mouse position.</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-ivar">@text_input_fields</span>.<span class="ruby-identifier">empty?</span>
+            <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_window</span>.<span class="ruby-identifier">text_input</span> = <span class="ruby-ivar">@text_input_fields</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">tf</span><span class="ruby-operator">|</span> <span class="ruby-identifier">tf</span>.<span class="ruby-identifier">under_point?</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>) }
+            <span class="ruby-comment"># Advanced: Move caret to clicked position</span>
+            <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_window</span>.<span class="ruby-identifier">text_input</span>.<span class="ruby-identifier">move_caret</span>(<span class="ruby-identifier">mouse_x</span>) <span class="ruby-keyword">unless</span> <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_window</span>.<span class="ruby-identifier">text_input</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-keyword">end</span>
+
         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">handle_mouse_down</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">MsRight</span>
         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">handle_right_mouse</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
@@ -805,7 +873,7 @@
 </pre>
 
           <div class="method-source-code" id="button_up-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1320</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1453</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">button_up</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@overlay_widget</span> 
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@overlay_widget</span>.<span class="ruby-identifier">button_up</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
@@ -846,7 +914,7 @@
           <p>For all child widgets, adjust the x coordinate so that they are centered.</p>
 
           <div class="method-source-code" id="center_children-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1504</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1653</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">center_children</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">empty?</span>
         <span class="ruby-keyword">return</span> 
@@ -881,7 +949,7 @@
           <p>A convenience method to return the center x coordinate of this widget</p>
 
           <div class="method-source-code" id="center_x-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1121</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1251</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">center_x</span>
     <span class="ruby-ivar">@x</span> <span class="ruby-operator">+</span> ((<span class="ruby-identifier">right_edge</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@x</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -902,7 +970,7 @@
           <p>A convenience method to return the center y coordinate of this widget</p>
 
           <div class="method-source-code" id="center_y-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1128</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1258</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">center_y</span>
     <span class="ruby-ivar">@y</span> <span class="ruby-operator">+</span> ((<span class="ruby-identifier">bottom_edge</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@y</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -923,7 +991,7 @@
           <p>Remove all children from this widget</p>
 
           <div class="method-source-code" id="clear_children-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1058</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1188</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clear_children</span> 
     <span class="ruby-ivar">@children</span> = [] 
 <span class="ruby-keyword">end</span></pre>
@@ -944,7 +1012,7 @@
           
 
           <div class="method-source-code" id="contains_click-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1213</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1338</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">contains_click</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-identifier">mouse_x</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@x</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">mouse_x</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">right_edge</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">mouse_y</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@y</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">mouse_y</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">bottom_edge</span>
 <span class="ruby-keyword">end</span></pre>
@@ -965,7 +1033,7 @@
           
 
           <div class="method-source-code" id="debug-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 925</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1038</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">debug</span>(<span class="ruby-identifier">message</span>)
     <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-identifier">message</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -986,7 +1054,7 @@
           <p>Drawing the background is on by default. Use this method to prevent drawing a background.</p>
 
           <div class="method-source-code" id="disable_background-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1065</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1195</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">disable_background</span>
     <span class="ruby-ivar">@show_background</span> = <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1007,7 +1075,7 @@
           <p>Drawing the border is on by default. Use this method to prevent drawing a border.</p>
 
           <div class="method-source-code" id="disable_border-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1072</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1202</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">disable_border</span>
     <span class="ruby-ivar">@show_border</span> = <span class="ruby-keyword">false</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -1025,14 +1093,10 @@
         </div>
 
         <div class="method-description">
-          <p>The primary draw method, used by the main Gosu loop draw method. A common usage pattern is to have a primary widget in your Gosu app that calls this draw method. All children of this widget are then automatically drawn by this method recursively. NOTE: As a widget author, you should only implement/override the</p>
-
-<pre>render method. This is a framework implementation that will
-handle child rendering and invoke render as a user-implemented
-callback.</pre>
+          <p>The primary draw method, used by the main Gosu loop draw method. A common usage pattern is to have a primary widget in your Gosu app that calls this draw method. All children of this widget are then automatically drawn by this method recursively. Note that as a widget author, you should only implement/override the render method. This is a framework implementation that will handle child rendering and invoke render as a user-implemented callback.</p>
 
           <div class="method-source-code" id="draw-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1170</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1300</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@visible</span> 
         <span class="ruby-identifier">render</span>
@@ -1066,7 +1130,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="draw_background-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1187</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1317</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_background</span>(<span class="ruby-identifier">z_override</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">color_override</span> = <span class="ruby-keyword">nil</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">color_override</span>.<span class="ruby-identifier">nil?</span> 
         <span class="ruby-identifier">bgcolor</span> = <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">background_color</span>
@@ -1094,16 +1158,10 @@ callback.</pre>
         </div>
 
         <div class="method-description">
-          <p>def draw_shadow(color)</p>
-
-<pre class="ruby"><span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_line</span> <span class="ruby-ivar">@x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-ivar">@y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">color</span>, <span class="ruby-identifier">right_edge</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-ivar">@y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">color</span>, <span class="ruby-identifier">relative_z_order</span>(<span class="ruby-constant">Z_ORDER_BORDER</span>)
-<span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_line</span> <span class="ruby-ivar">@x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-ivar">@y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">color</span>, <span class="ruby-ivar">@x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">bottom_edge</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">color</span>, <span class="ruby-identifier">relative_z_order</span>(<span class="ruby-constant">Z_ORDER_BORDER</span>)
-</pre>
-
-<p>end</p>
+          
 
           <div class="method-source-code" id="draw_border-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1206</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1331</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_border</span>
     <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_line</span> <span class="ruby-ivar">@x</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">border_color</span>, <span class="ruby-identifier">right_edge</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">border_color</span>, <span class="ruby-identifier">relative_z_order</span>(<span class="ruby-constant">Z_ORDER_BORDER</span>)
     <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_line</span> <span class="ruby-ivar">@x</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">border_color</span>, <span class="ruby-ivar">@x</span>, <span class="ruby-identifier">bottom_edge</span>, <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">border_color</span>, <span class="ruby-identifier">relative_z_order</span>(<span class="ruby-constant">Z_ORDER_BORDER</span>)
@@ -1127,7 +1185,7 @@ callback.</pre>
           <p>Turn back on drawing of the background</p>
 
           <div class="method-source-code" id="enable_background-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1086</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1216</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enable_background</span>
     <span class="ruby-ivar">@show_background</span> = <span class="ruby-keyword">true</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -1148,7 +1206,7 @@ callback.</pre>
           <p>Turn back on drawing of the border</p>
 
           <div class="method-source-code" id="enable_border-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1079</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1209</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enable_border</span>
     <span class="ruby-ivar">@show_border</span> = <span class="ruby-keyword">true</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -1169,7 +1227,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="error-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 934</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1047</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">error</span>(<span class="ruby-identifier">message</span>)
     <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_logger</span>.<span class="ruby-identifier">error</span> <span class="ruby-identifier">message</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -1190,7 +1248,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="get_layout-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 952</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1065</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_layout</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">uses_layout</span> 
         <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;The widget #{self.class.name} does not support layouts&quot;</span>
@@ -1217,7 +1275,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="get_theme-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 966</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1084</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_theme</span> 
     <span class="ruby-ivar">@gui_theme</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1238,7 +1296,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="graphics_color-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 978</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">graphics_color</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@override_color</span> 
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@override_color</span> 
@@ -1262,7 +1320,7 @@ callback.</pre>
           <p>Override this method in your subclass to process keyboard events. The base implementation is empty. Note that the mouse was not necessarily positioned over this widget. You can check this using the <a href="Widget.html#method-i-contains_click"><code>contains_click</code></a>(mouse_x, mouse_y) method and decide if you want to process the event based on that, if desired.</p>
 
           <div class="method-source-code" id="handle_key_press-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1554</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1703</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_key_press</span> <span class="ruby-identifier">id</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1283,7 +1341,7 @@ callback.</pre>
           <p>Override this method in your subclass to process mouse down events. The base implementation is empty</p>
 
           <div class="method-source-code" id="handle_mouse_down-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1526</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1675</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_mouse_down</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1304,7 +1362,7 @@ callback.</pre>
           <p>Override this method in your subclass to process mouse up events. The base implementation is empty</p>
 
           <div class="method-source-code" id="handle_mouse_up-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1534</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1683</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_mouse_up</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1325,7 +1383,7 @@ callback.</pre>
           <p>Override this method in your subclass to process the right mouse click event. Note we do not differentiate between up and down for the right mouse button. The base implementation is empty</p>
 
           <div class="method-source-code" id="handle_right_mouse-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1543</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1692</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_right_mouse</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1346,7 +1404,7 @@ callback.</pre>
           <p>Override this method in your subclass to perform any logic needed as part of the main Gosu update loop. In most cases, this method is invoked 60 times per second.</p>
 
           <div class="method-source-code" id="handle_update-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1563</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1712</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_update</span> <span class="ruby-identifier">update_count</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># empty base implementation</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1367,7 +1425,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="info-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 928</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1041</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">info</span>(<span class="ruby-identifier">message</span>)
     <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-identifier">message</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -1388,7 +1446,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="intercept_widget_event-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1586</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1735</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">intercept_widget_event</span>(<span class="ruby-identifier">result</span>)
     <span class="ruby-comment"># Base implementation just relays the event</span>
     <span class="ruby-identifier">result</span>
@@ -1410,7 +1468,7 @@ callback.</pre>
           <p>A convenience method, or alias, to return the left x coordinate of this widget.</p>
 
           <div class="method-source-code" id="left_edge-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1093</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1223</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">left_edge</span>
     <span class="ruby-ivar">@x</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1431,7 +1489,7 @@ callback.</pre>
           <p>Move this widget to an absolute x, y position on the screen.  It will automatically move all child widgets, however be warned that if you are manually rendering any elements within your own render logic, you will need to deal with that seperately as the base class does not have access to its coordinates.</p>
 
           <div class="method-source-code" id="move_recursive_absolute-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1139</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1269</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_recursive_absolute</span>(<span class="ruby-identifier">new_x</span>, <span class="ruby-identifier">new_y</span>)
     <span class="ruby-identifier">delta_x</span> = <span class="ruby-identifier">new_x</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@x</span> 
     <span class="ruby-identifier">delta_y</span> = <span class="ruby-identifier">new_y</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@y</span>
@@ -1454,7 +1512,7 @@ callback.</pre>
           <p>Move this widget to a relative number of x, y pixels on the screen.  It will automatically move all child widgets, however be warned that if you are manually rendering any elements within your own render logic, you will need to deal with that seperately as the base class does not have access to its coordinates.</p>
 
           <div class="method-source-code" id="move_recursive_delta-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1152</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1282</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">move_recursive_delta</span>(<span class="ruby-identifier">delta_x</span>, <span class="ruby-identifier">delta_y</span>)
     <span class="ruby-ivar">@x</span> = <span class="ruby-ivar">@x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">delta_x</span>
     <span class="ruby-ivar">@y</span> = <span class="ruby-ivar">@y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">delta_y</span>
@@ -1479,7 +1537,7 @@ callback.</pre>
           <p>Return true if any part of the given widget overlaps on the screen with this widget as defined by the rectangle from the upper left corner to the bottom right. Note that your widget may not necessariliy draw pixels in this entire space.</p>
 
           <div class="method-source-code" id="overlaps_with-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1222</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1347</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">overlaps_with</span>(<span class="ruby-identifier">other_widget</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">other_widget</span>.<span class="ruby-identifier">contains_click</span>(<span class="ruby-ivar">@x</span>, <span class="ruby-ivar">@y</span>)
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> 
@@ -1515,7 +1573,7 @@ callback.</pre>
           <p>Return the absolute x coordinate given the relative x pixel to this widget</p>
 
           <div class="method-source-code" id="relative_x-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1347</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1480</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">relative_x</span>(<span class="ruby-identifier">x</span>)
     <span class="ruby-identifier">x_pixel_to_screen</span>(<span class="ruby-identifier">x</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1536,7 +1594,7 @@ callback.</pre>
           <p>Return the absolute y coordinate given the relative y pixel to this widget</p>
 
           <div class="method-source-code" id="relative_y-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1359</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1492</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">relative_y</span>(<span class="ruby-identifier">y</span>)
     <span class="ruby-identifier">y_pixel_to_screen</span>(<span class="ruby-identifier">y</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1557,7 +1615,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="relative_z_order-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1002</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">relative_z_order</span>(<span class="ruby-identifier">relative_order</span>)
     <span class="ruby-ivar">@base_z</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">relative_order</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -1578,7 +1636,7 @@ callback.</pre>
           <p>Remove the given child widget</p>
 
           <div class="method-source-code" id="remove_child-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1025</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1155</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove_child</span>(<span class="ruby-identifier">child</span>)
     <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">child</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1599,7 +1657,7 @@ callback.</pre>
           <p>Remove a list of child widgets</p>
 
           <div class="method-source-code" id="remove_children-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1032</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1162</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove_children</span>(<span class="ruby-identifier">list</span>)
     <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
         <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">child</span>)
@@ -1622,7 +1680,7 @@ callback.</pre>
           <p>Remove all children whose class name includes the given token. This method can be used if you do not have a saved list of the widgets you want to remove.</p>
 
           <div class="method-source-code" id="remove_children_by_type-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1043</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1173</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove_children_by_type</span>(<span class="ruby-identifier">class_name_token</span>)
     <span class="ruby-identifier">children_to_remove</span> = []
     <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
@@ -1651,7 +1709,7 @@ callback.</pre>
           <p>Override this method in your subclass to perform any custom rendering logic. Note that child widgets are automatically drawn and you do not need to do that yourself.</p>
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1572</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1721</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span> 
     <span class="ruby-comment"># Base implementation is empty</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1672,9 +1730,30 @@ callback.</pre>
           <p>A convenience method to return the right x coordinate of this widget.</p>
 
           <div class="method-source-code" id="right_edge-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1100</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1230</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">right_edge</span>
     <span class="ruby-ivar">@x</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@width</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-selection_color" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">selection_color</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="selection_color-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1114</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">selection_color</span> 
+    <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">selection_color</span> 
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -1693,7 +1772,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="set_absolute_position-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 938</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1051</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_absolute_position</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>) 
     <span class="ruby-ivar">@x</span> = <span class="ruby-identifier">x</span> 
     <span class="ruby-ivar">@y</span> = <span class="ruby-identifier">y</span> 
@@ -1715,7 +1794,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="set_dimensions-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 943</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1056</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_dimensions</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
     <span class="ruby-ivar">@width</span> = <span class="ruby-identifier">width</span>
     <span class="ruby-ivar">@height</span> = <span class="ruby-identifier">height</span> 
@@ -1737,7 +1816,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="set_layout-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 962</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1075</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_layout</span>(<span class="ruby-identifier">layout_type</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-ivar">@layout</span> = <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">create_layout_for_widget</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">layout_type</span>, <span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1758,9 +1837,30 @@ callback.</pre>
           
 
           <div class="method-source-code" id="set_selected-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 970</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1092</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_selected</span> 
     <span class="ruby-ivar">@is_selected</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-set_theme" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">set_theme</span><span
+            class="method-args">(new_theme)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="set_theme-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1088</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_theme</span>(<span class="ruby-identifier">new_theme</span>)
+    <span class="ruby-ivar">@gui_theme</span> = <span class="ruby-identifier">new_theme</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -1779,7 +1879,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="text_color-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 985</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">text_color</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@override_color</span> 
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@override_color</span> 
@@ -1803,7 +1903,7 @@ callback.</pre>
           <p>A convenience method, or alias, to return the top y coordinate of this widget.</p>
 
           <div class="method-source-code" id="top_edge-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1107</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1237</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">top_edge</span>
     <span class="ruby-ivar">@y</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1824,7 +1924,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="unset_selected-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 974</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1096</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unset_selected</span> 
     <span class="ruby-ivar">@is_selected</span> = <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1845,7 +1945,7 @@ callback.</pre>
           <p>The framework implementation of the main Gosu update loop. This method propagates the event to all child widgets as well. As a widget author, do not override this method. Your callback to implement is the <a href="Widget.html#method-i-handle_update"><code>handle_update</code></a>(update_count, mouse_x, mouse_y) method.</p>
 
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1247</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1372</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(<span class="ruby-identifier">update_count</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@overlay_widget</span> 
         <span class="ruby-ivar">@overlay_widget</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">update_count</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
@@ -1872,7 +1972,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="uses_layout-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 948</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1061</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">uses_layout</span>
     <span class="ruby-keyword">true</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -1893,7 +1993,7 @@ callback.</pre>
           
 
           <div class="method-source-code" id="warn-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 931</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1044</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">warn</span>(<span class="ruby-identifier">message</span>)
     <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">get_logger</span>.<span class="ruby-identifier">warn</span> <span class="ruby-identifier">message</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -1914,7 +2014,7 @@ callback.</pre>
           <p>Return the relative z order compared to other widgets. The absolute z order is the base plus this value. Its calculated relative so that overlay widgets can be  on top of base displays.</p>
 
           <div class="method-source-code" id="widget_z-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1582</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1731</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">widget_z</span> 
     <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1935,7 +2035,7 @@ callback.</pre>
           <p>An alias for <a href="Widget.html#method-i-relative_x"><code>relative_x</code></a></p>
 
           <div class="method-source-code" id="x_pixel_to_screen-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1352</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1485</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">x_pixel_to_screen</span>(<span class="ruby-identifier">x</span>)
     <span class="ruby-ivar">@x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">x</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1956,7 +2056,7 @@ callback.</pre>
           <p>An alias for <a href="Widget.html#method-i-relative_y"><code>relative_y</code></a></p>
 
           <div class="method-source-code" id="y_pixel_to_screen-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1364</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1497</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">y_pixel_to_screen</span>(<span class="ruby-identifier">y</span>)
     <span class="ruby-ivar">@y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">y</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1977,7 +2077,7 @@ callback.</pre>
           <p>The z order is determined by taking the <a href="Widget.html#attribute-i-base_z"><code>base_z</code></a> and adding the widget specific value. An overlay widget has a <a href="Widget.html#attribute-i-base_z"><code>base_z</code></a> that is +10 higher than the widget underneath it. The <a href="Widget.html#method-i-widget_z"><code>widget_z</code></a> method provides a relative ordering that is common for user interfaces. For example, text is higher than graphic elements and backgrounds.</p>
 
           <div class="method-source-code" id="z_order-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 998</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">z_order</span> 
     <span class="ruby-ivar">@base_z</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">widget_z</span>
 <span class="ruby-keyword">end</span></pre>

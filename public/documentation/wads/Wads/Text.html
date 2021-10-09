@@ -124,7 +124,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(x, y, label, color = nil, use_large_font = false)</span>
+            class="method-args">(x, y, label, args = {})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -136,12 +136,19 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1645</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">color</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">use_large_font</span> = <span class="ruby-keyword">false</span>) 
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1797</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">args</span> = {}) 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>) 
     <span class="ruby-ivar">@label</span> = <span class="ruby-identifier">label</span>
-    <span class="ruby-ivar">@use_large_font</span> = <span class="ruby-identifier">use_large_font</span>
-    <span class="ruby-ivar">@override_color</span> = <span class="ruby-identifier">color</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+        <span class="ruby-ivar">@gui_theme</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_USE_LARGE_FONT</span>]
+        <span class="ruby-ivar">@use_large_font</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_USE_LARGE_FONT</span>] 
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_COLOR</span>]
+        <span class="ruby-ivar">@override_color</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_COLOR</span>]
+    <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">disable_border</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@use_large_font</span> 
         <span class="ruby-identifier">set_dimensions</span>(<span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">font_large</span>.<span class="ruby-identifier">text_width</span>(<span class="ruby-ivar">@label</span>) <span class="ruby-operator">+</span> <span class="ruby-value">10</span>, <span class="ruby-value">20</span>)
@@ -173,7 +180,7 @@
           
 
           <div class="method-source-code" id="change_text-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1662</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1821</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">change_text</span>(<span class="ruby-identifier">new_text</span>)
     <span class="ruby-identifier">set_text</span>(<span class="ruby-identifier">new_text</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -194,7 +201,7 @@
           
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1666</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1825</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@use_large_font</span> 
         <span class="ruby-identifier">get_theme</span>.<span class="ruby-identifier">font_large</span>.<span class="ruby-identifier">draw_text</span>(<span class="ruby-ivar">@label</span>, <span class="ruby-ivar">@x</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-identifier">z_order</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">text_color</span>)
@@ -219,7 +226,7 @@
           
 
           <div class="method-source-code" id="set_text-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1658</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1817</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_text</span>(<span class="ruby-identifier">new_text</span>)
     <span class="ruby-ivar">@label</span> = <span class="ruby-identifier">new_text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -240,7 +247,7 @@
           
 
           <div class="method-source-code" id="widget_z-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1674</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1833</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">widget_z</span> 
     <span class="ruby-constant">Z_ORDER_TEXT</span>
 <span class="ruby-keyword">end</span></pre>

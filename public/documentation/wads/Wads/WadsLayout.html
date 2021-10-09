@@ -61,7 +61,7 @@
 <div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  <p class="link">Object
+  <p class="link"><a href="../Object.html">Object</a>
 </div>
 
     
@@ -84,6 +84,7 @@
     <li ><a href="#method-i-add_single_select_table">#add_single_select_table</a>
     <li ><a href="#method-i-add_table">#add_table</a>
     <li ><a href="#method-i-add_text">#add_text</a>
+    <li ><a href="#method-i-add_text_input">#add_text_input</a>
     <li ><a href="#method-i-add_vertical_panel">#add_vertical_panel</a>
     <li ><a href="#method-i-add_widget">#add_widget</a>
     <li ><a href="#method-i-get_coordinates">#get_coordinates</a>
@@ -163,7 +164,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 496</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 589</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">parent_widget</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-ivar">@border_coords</span> = <span class="ruby-constant">Coordinates</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
     <span class="ruby-ivar">@parent_widget</span> = <span class="ruby-identifier">parent_widget</span>
@@ -193,12 +194,14 @@
           
 
           <div class="method-source-code" id="add_button-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 539</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 648</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_button</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">args</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
     <span class="ruby-identifier">text_width</span> = <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">current_theme</span>.<span class="ruby-identifier">pixel_width_for_string</span>(<span class="ruby-identifier">label</span>) <span class="ruby-operator">+</span> <span class="ruby-value">20</span>
     <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-constant">ELEMENT_BUTTON</span>,
-        { <span class="ruby-constant">ARG_DESIRED_WIDTH</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">text_width</span>,}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
-    <span class="ruby-identifier">new_button</span> = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">width</span>)
+        { <span class="ruby-constant">ARG_DESIRED_WIDTH</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">text_width</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
+    <span class="ruby-identifier">new_button</span> = <span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">label</span>, 
+                            { <span class="ruby-constant">ARG_DESIRED_WIDTH</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">width</span>,
+                              <span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">gui_theme</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_button</span>.<span class="ruby-identifier">set_action</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
     <span class="ruby-identifier">new_button</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">base_z</span>
     <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_button</span>)
@@ -221,7 +224,7 @@
           
 
           <div class="method-source-code" id="add_document-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 559</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 670</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_document</span>(<span class="ruby-identifier">content</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">number_of_content_lines</span> = <span class="ruby-identifier">content</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">count</span>
     <span class="ruby-identifier">height</span> = (<span class="ruby-identifier">number_of_content_lines</span> <span class="ruby-operator">*</span> <span class="ruby-value">26</span>) <span class="ruby-operator">+</span> <span class="ruby-value">4</span>
@@ -229,7 +232,8 @@
         { <span class="ruby-constant">ARG_DESIRED_HEIGHT</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">height</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>,
                            <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">height</span>,
-                           <span class="ruby-identifier">content</span>)
+                           <span class="ruby-identifier">content</span>,
+                           {<span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">gui_theme</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_doc</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">base_z</span>
     <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_doc</span>)
     <span class="ruby-identifier">new_doc</span>
@@ -251,7 +255,7 @@
           
 
           <div class="method-source-code" id="add_graph_display-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 572</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 684</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_graph_display</span>(<span class="ruby-identifier">graph</span>, <span class="ruby-identifier">display_mode</span> = <span class="ruby-constant">GRAPH_DISPLAY_ALL</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-constant">ELEMENT_GRAPH</span>, <span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">new_graph</span> = <span class="ruby-constant">GraphWidget</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>,
@@ -278,7 +282,7 @@
           
 
           <div class="method-source-code" id="add_horizontal_panel-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 618</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 733</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_horizontal_panel</span>(<span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">internal_add_panel</span>(<span class="ruby-constant">ELEMENT_HORIZONTAL_PANEL</span>, <span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -299,13 +303,14 @@
           
 
           <div class="method-source-code" id="add_image-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 528</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 636</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_image</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">img</span> = <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">filename</span>)
     <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-constant">ELEMENT_IMAGE</span>,
         { <span class="ruby-constant">ARG_DESIRED_WIDTH</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">img</span>.<span class="ruby-identifier">width</span>,
           <span class="ruby-constant">ARG_DESIRED_HEIGHT</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">img</span>.<span class="ruby-identifier">height</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
-    <span class="ruby-identifier">new_image</span> = <span class="ruby-constant">ImageWidget</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">img</span>)
+    <span class="ruby-identifier">new_image</span> = <span class="ruby-constant">ImageWidget</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">img</span>,
+                                {<span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">gui_theme</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_image</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">base_z</span>
     <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_image</span>)
     <span class="ruby-identifier">new_image</span>
@@ -327,7 +332,7 @@
           
 
           <div class="method-source-code" id="add_max_panel-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 626</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 741</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_max_panel</span>(<span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">internal_add_panel</span>(<span class="ruby-constant">ELEMENT_MAX_PANEL</span>, <span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -348,14 +353,15 @@
           
 
           <div class="method-source-code" id="add_multi_select_table-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 594</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 707</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_multi_select_table</span>(<span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">visible_rows</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">calculated_height</span> = <span class="ruby-value">30</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">visible_rows</span> <span class="ruby-operator">*</span> <span class="ruby-value">30</span>)
     <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-constant">ELEMENT_TABLE</span>,
         { <span class="ruby-constant">ARG_DESIRED_HEIGHT</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">calculated_height</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_table</span> = <span class="ruby-constant">MultiSelectTable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>,
                                      <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">height</span>,
-                                     <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">visible_rows</span>)
+                                     <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">visible_rows</span>,
+                                     {<span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">gui_theme</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_table</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">base_z</span>
     <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_table</span>)
     <span class="ruby-identifier">new_table</span>
@@ -377,7 +383,7 @@
           
 
           <div class="method-source-code" id="add_plot-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 550</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 661</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_plot</span>(<span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-constant">ELEMENT_PLOT</span>, <span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">new_plot</span> = <span class="ruby-constant">Plot</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>,
@@ -403,14 +409,15 @@
           
 
           <div class="method-source-code" id="add_single_select_table-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 582</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 694</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_single_select_table</span>(<span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">visible_rows</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">calculated_height</span> = <span class="ruby-value">30</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">visible_rows</span> <span class="ruby-operator">*</span> <span class="ruby-value">30</span>)
     <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-constant">ELEMENT_TABLE</span>,
         { <span class="ruby-constant">ARG_DESIRED_HEIGHT</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">calculated_height</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_table</span> = <span class="ruby-constant">SingleSelectTable</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>,
                                       <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">height</span>,
-                                      <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">visible_rows</span>)
+                                      <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">visible_rows</span>,
+                                      {<span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">gui_theme</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_table</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">base_z</span>
     <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_table</span>)
     <span class="ruby-identifier">new_table</span>
@@ -432,14 +439,15 @@
           
 
           <div class="method-source-code" id="add_table-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 606</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 720</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_table</span>(<span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">visible_rows</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">calculated_height</span> = <span class="ruby-value">30</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">visible_rows</span> <span class="ruby-operator">*</span> <span class="ruby-value">30</span>)
     <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-constant">ELEMENT_TABLE</span>,
         { <span class="ruby-constant">ARG_DESIRED_HEIGHT</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">calculated_height</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_table</span> = <span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>,
                         <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">height</span>,
-                        <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">visible_rows</span>)
+                        <span class="ruby-identifier">column_headers</span>, <span class="ruby-identifier">visible_rows</span>,
+                        {<span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">gui_theme</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_table</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">base_z</span>
     <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_table</span>)
     <span class="ruby-identifier">new_table</span>
@@ -461,17 +469,49 @@
           
 
           <div class="method-source-code" id="add_text-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 516</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 609</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_text</span>(<span class="ruby-identifier">message</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">default_dimensions</span> = <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">default_dimensions</span>(<span class="ruby-constant">ELEMENT_TEXT</span>)
-    <span class="ruby-identifier">text_width</span> = <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">current_theme</span>.<span class="ruby-identifier">pixel_width_for_string</span>(<span class="ruby-identifier">message</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_USE_LARGE_FONT</span>]
+        <span class="ruby-identifier">text_width</span> = <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">current_theme</span>.<span class="ruby-identifier">pixel_width_for_large_font</span>(<span class="ruby-identifier">message</span>)
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">text_width</span> = <span class="ruby-constant">WadsConfig</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">current_theme</span>.<span class="ruby-identifier">pixel_width_for_string</span>(<span class="ruby-identifier">message</span>)
+    <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-constant">ELEMENT_TEXT</span>,
         { <span class="ruby-constant">ARG_DESIRED_WIDTH</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">text_width</span>,
           <span class="ruby-constant">ARG_DESIRED_HEIGHT</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">default_dimensions</span>[<span class="ruby-value">1</span>]}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
-    <span class="ruby-identifier">new_text</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">message</span>, <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_COLOR</span>])
+    <span class="ruby-identifier">new_text</span> = <span class="ruby-constant">Text</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">message</span>,
+        { <span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">gui_theme</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
     <span class="ruby-identifier">new_text</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">base_z</span>
     <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_text</span>)
     <span class="ruby-identifier">new_text</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-add_text_input" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">add_text_input</span><span
+            class="method-args">(width, default_text = &#39;&#39;, args = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="add_text_input-source">
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 626</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_text_input</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">default_text</span> = <span class="ruby-string">&#39;&#39;</span>, <span class="ruby-identifier">args</span> = {})
+    <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-constant">ELEMENT_TEXT_INPUT</span>,
+        { <span class="ruby-constant">ARG_DESIRED_WIDTH</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">width</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">args</span>))
+    <span class="ruby-identifier">new_text_input</span> = <span class="ruby-constant">TextField</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>, <span class="ruby-identifier">default_text</span>, <span class="ruby-identifier">width</span>)
+    <span class="ruby-identifier">new_text_input</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">base_z</span>
+    <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_text_input</span>)
+    <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">text_input_fields</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_text_input</span>
+    <span class="ruby-identifier">new_text_input</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -490,7 +530,7 @@
           
 
           <div class="method-source-code" id="add_vertical_panel-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 622</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 737</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_vertical_panel</span>(<span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">internal_add_panel</span>(<span class="ruby-constant">ELEMENT_VERTICAL_PANEL</span>, <span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -511,7 +551,7 @@
           
 
           <div class="method-source-code" id="add_widget-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 506</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 599</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_widget</span>(<span class="ruby-identifier">widget</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-comment"># The widget already has an x, y position, so we need to move it</span>
     <span class="ruby-comment"># based on the layout</span>
@@ -538,7 +578,7 @@
           
 
           <div class="method-source-code" id="get_coordinates-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 502</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 595</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_coordinates</span>(<span class="ruby-identifier">element_type</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;You must use a subclass of WadsLayout&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -559,14 +599,23 @@
           
 
           <div class="method-source-code" id="internal_add_panel-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 630</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 745</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">internal_add_panel</span>(<span class="ruby-identifier">orientation</span>, <span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">coordinates</span> = <span class="ruby-identifier">get_coordinates</span>(<span class="ruby-identifier">orientation</span>, <span class="ruby-identifier">args</span>)
     <span class="ruby-identifier">new_panel</span> = <span class="ruby-constant">Panel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">y</span>,
                           <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">width</span>, <span class="ruby-identifier">coordinates</span>.<span class="ruby-identifier">height</span>)
-    <span class="ruby-identifier">new_panel</span>.<span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_VERTICAL_COLUMN</span>, <span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">new_panel_layout</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_LAYOUT</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">new_panel_layout</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">new_panel_layout</span> = <span class="ruby-constant">LAYOUT_VERTICAL_COLUMN</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">new_panel</span>.<span class="ruby-identifier">set_layout</span>(<span class="ruby-identifier">new_panel_layout</span>, <span class="ruby-identifier">args</span>)
+
+    <span class="ruby-identifier">new_panel_theme</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+    <span class="ruby-identifier">new_panel</span>.<span class="ruby-identifier">gui_theme</span> = <span class="ruby-identifier">new_panel_theme</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">new_panel_theme</span>.<span class="ruby-identifier">nil?</span>
+
     <span class="ruby-identifier">new_panel</span>.<span class="ruby-identifier">base_z</span> = <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">base_z</span>
     <span class="ruby-ivar">@parent_widget</span>.<span class="ruby-identifier">add_child</span>(<span class="ruby-identifier">new_panel</span>)
+    <span class="ruby-comment">#new_panel.disable_border</span>
     <span class="ruby-identifier">new_panel</span>
 <span class="ruby-keyword">end</span></pre>
           </div>

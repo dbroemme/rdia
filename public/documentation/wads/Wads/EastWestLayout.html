@@ -90,7 +90,7 @@
 
 <pre>+-------------------------------------------------+
 +                        |                        +
-+     LAYOUT_WEST        |     LAYOUT_EAST        +
++     SECTION_WEST       |      SECTION_EAST      +
 +                        |                        +
 +-------------------------------------------------+</pre>
 
@@ -122,18 +122,18 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 762</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 886</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">parent_widget</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-keyword">super</span>
     <span class="ruby-identifier">west_section_width</span> = <span class="ruby-identifier">width</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_DESIRED_WIDTH</span>]
-        <span class="ruby-identifier">west_section_width</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_DESIRED_WIDTH</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_PANEL_WIDTH</span>]
+        <span class="ruby-identifier">west_section_width</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_PANEL_WIDTH</span>]
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">east_section_width</span> = <span class="ruby-identifier">width</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">west_section_width</span>
-    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">LAYOUT_WEST</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>,
+    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">SECTION_WEST</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>,
                                                    <span class="ruby-identifier">west_section_width</span>, <span class="ruby-identifier">height</span>,
                                                    <span class="ruby-constant">FILL_FULL_SIZE</span>)
-    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">LAYOUT_EAST</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">west_section_width</span>, <span class="ruby-identifier">y</span>,
+    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">SECTION_EAST</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">west_section_width</span>, <span class="ruby-identifier">y</span>,
                                                    <span class="ruby-identifier">east_section_width</span>, <span class="ruby-identifier">height</span>,
                                                    <span class="ruby-constant">FILL_FULL_SIZE</span>)
 <span class="ruby-keyword">end</span></pre>

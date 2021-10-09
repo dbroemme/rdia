@@ -182,7 +182,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(x, y, width, height, headers, max_visible_rows = 10)</span>
+            class="method-args">(x, y, width, height, headers, max_visible_rows = 10, args = {})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -194,10 +194,13 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2083</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">headers</span>, <span class="ruby-identifier">max_visible_rows</span> = <span class="ruby-value">10</span>) 
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2250</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">headers</span>, <span class="ruby-identifier">max_visible_rows</span> = <span class="ruby-value">10</span>, <span class="ruby-identifier">args</span> = {}) 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
     <span class="ruby-identifier">set_dimensions</span>(<span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+        <span class="ruby-ivar">@gui_theme</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+    <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@headers</span> = <span class="ruby-identifier">headers</span>
     <span class="ruby-ivar">@current_row</span> = <span class="ruby-value">0</span>
     <span class="ruby-ivar">@max_visible_rows</span> = <span class="ruby-identifier">max_visible_rows</span>
@@ -230,7 +233,7 @@
           
 
           <div class="method-source-code" id="add_row-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2112</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2282</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_row</span>(<span class="ruby-identifier">data_row</span>, <span class="ruby-identifier">color</span> = <span class="ruby-identifier">text_color</span> )
     <span class="ruby-ivar">@data_rows</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">data_row</span>
     <span class="ruby-ivar">@row_colors</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">color</span>
@@ -252,7 +255,7 @@
           
 
           <div class="method-source-code" id="add_table_delete_button-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2117</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2287</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">add_table_delete_button</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@delete_buttons</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@max_visible_rows</span>
         <span class="ruby-identifier">new_button</span> = <span class="ruby-identifier">add_delete_button</span>(<span class="ruby-ivar">@width</span> <span class="ruby-operator">-</span> <span class="ruby-value">18</span>, <span class="ruby-ivar">@next_delete_button_y</span>) <span class="ruby-keyword">do</span>
@@ -279,7 +282,7 @@
           
 
           <div class="method-source-code" id="clear_rows-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2107</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2277</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clear_rows</span> 
     <span class="ruby-ivar">@data_rows</span> = []
     <span class="ruby-ivar">@row_colors</span> = []
@@ -301,7 +304,7 @@
           
 
           <div class="method-source-code" id="determine_row_number-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2209</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2383</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">determine_row_number</span>(<span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-identifier">relative_y</span> = <span class="ruby-identifier">mouse_y</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@y</span>
     <span class="ruby-identifier">row_number</span> = (<span class="ruby-identifier">relative_y</span> <span class="ruby-operator">/</span> <span class="ruby-value">30</span>).<span class="ruby-identifier">floor</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
@@ -327,7 +330,7 @@
           
 
           <div class="method-source-code" id="handle_update-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2135</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2305</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_update</span> <span class="ruby-identifier">update_count</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-comment"># How many visible data rows are there</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@can_delete_rows</span>
@@ -365,7 +368,7 @@
           
 
           <div class="method-source-code" id="number_of_rows-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2156</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2326</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">number_of_rows</span> 
     <span class="ruby-ivar">@data_rows</span>.<span class="ruby-identifier">size</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -386,7 +389,7 @@
           
 
           <div class="method-source-code" id="remove_table_delete_button-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2127</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2297</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove_table_delete_button</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-ivar">@delete_buttons</span>.<span class="ruby-identifier">empty?</span>
         <span class="ruby-ivar">@delete_buttons</span>.<span class="ruby-identifier">pop</span>
@@ -411,7 +414,7 @@
           
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2160</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2330</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span>
     <span class="ruby-identifier">draw_border</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">number_of_rows</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
@@ -429,6 +432,7 @@
         <span class="ruby-identifier">column_widths</span>[<span class="ruby-identifier">c</span>] = <span class="ruby-identifier">max_length</span>
     <span class="ruby-keyword">end</span>
 
+    <span class="ruby-comment"># Draw a horizontal line between header and data rows</span>
     <span class="ruby-identifier">x</span> = <span class="ruby-ivar">@x</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">number_of_columns</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
         (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">number_of_columns</span><span class="ruby-value">-2</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> 
@@ -437,10 +441,13 @@
         <span class="ruby-keyword">end</span> 
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-identifier">y</span> = <span class="ruby-ivar">@y</span>             
+    <span class="ruby-comment"># Draw the header row</span>
+    <span class="ruby-identifier">y</span> = <span class="ruby-ivar">@y</span>
+    <span class="ruby-constant">Gosu</span><span class="ruby-operator">::</span><span class="ruby-identifier">draw_rect</span>(<span class="ruby-ivar">@x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">y</span>, <span class="ruby-ivar">@width</span> <span class="ruby-operator">-</span> <span class="ruby-value">3</span>, <span class="ruby-value">28</span>, <span class="ruby-identifier">graphics_color</span>, <span class="ruby-identifier">relative_z_order</span>(<span class="ruby-constant">Z_ORDER_SELECTION_BACKGROUND</span>)) 
+
     <span class="ruby-identifier">x</span> = <span class="ruby-ivar">@x</span> <span class="ruby-operator">+</span> <span class="ruby-value">20</span>
     (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">number_of_columns</span><span class="ruby-value">-1</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> 
-        <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">font</span>.<span class="ruby-identifier">draw_text</span>(<span class="ruby-ivar">@headers</span>[<span class="ruby-identifier">c</span>], <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">z_order</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">text_color</span>)
+        <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">font</span>.<span class="ruby-identifier">draw_text</span>(<span class="ruby-ivar">@headers</span>[<span class="ruby-identifier">c</span>], <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">z_order</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">text_color</span>)
         <span class="ruby-identifier">x</span> = <span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">column_widths</span>[<span class="ruby-identifier">c</span>] <span class="ruby-operator">+</span> <span class="ruby-value">20</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">y</span> = <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">30</span>
@@ -477,7 +484,7 @@
           
 
           <div class="method-source-code" id="scroll_down-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2101</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2271</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_down</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current_row</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@max_visible_rows</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@data_rows</span>.<span class="ruby-identifier">size</span>
         <span class="ruby-ivar">@current_row</span> = <span class="ruby-ivar">@current_row</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@max_visible_rows</span> 
@@ -500,7 +507,7 @@
           
 
           <div class="method-source-code" id="scroll_up-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2095</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2265</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scroll_up</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@current_row</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
         <span class="ruby-ivar">@current_row</span> = <span class="ruby-ivar">@current_row</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@max_visible_rows</span> 
@@ -523,7 +530,7 @@
           
 
           <div class="method-source-code" id="uses_layout-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2222</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2396</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">uses_layout</span>
     <span class="ruby-keyword">false</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -544,7 +551,7 @@
           
 
           <div class="method-source-code" id="widget_z-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2218</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2392</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">widget_z</span> 
     <span class="ruby-constant">Z_ORDER_TEXT</span>
 <span class="ruby-keyword">end</span></pre>

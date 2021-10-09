@@ -150,7 +150,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(x, y, label, width = nil)</span>
+            class="method-args">(x, y, label, args = {})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -162,15 +162,18 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1750</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">width</span> = <span class="ruby-keyword">nil</span>) 
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1909</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">label</span>, <span class="ruby-identifier">args</span> = {}) 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>) 
     <span class="ruby-ivar">@label</span> = <span class="ruby-identifier">label</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+        <span class="ruby-ivar">@gui_theme</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_THEME</span>]
+    <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@text_pixel_width</span> = <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">font</span>.<span class="ruby-identifier">text_width</span>(<span class="ruby-ivar">@label</span>)
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">width</span>.<span class="ruby-identifier">nil?</span>
-        <span class="ruby-ivar">@width</span> = <span class="ruby-ivar">@text_pixel_width</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_DESIRED_WIDTH</span>]
+        <span class="ruby-ivar">@width</span> = <span class="ruby-identifier">args</span>[<span class="ruby-constant">ARG_DESIRED_WIDTH</span>] 
     <span class="ruby-keyword">else</span> 
-        <span class="ruby-ivar">@width</span> = <span class="ruby-identifier">width</span> 
+        <span class="ruby-ivar">@width</span> = <span class="ruby-ivar">@text_pixel_width</span> <span class="ruby-operator">+</span> <span class="ruby-value">10</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@height</span> = <span class="ruby-value">26</span>
     <span class="ruby-ivar">@is_pressed</span> = <span class="ruby-keyword">false</span>
@@ -200,7 +203,7 @@
           
 
           <div class="method-source-code" id="handle_mouse_down-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1777</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1939</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_mouse_down</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-ivar">@is_pressed</span> = <span class="ruby-keyword">true</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@action_code</span>
@@ -224,7 +227,7 @@
           
 
           <div class="method-source-code" id="handle_update-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1784</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1946</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_update</span> <span class="ruby-identifier">update_count</span>, <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@is_pressed</span>
         <span class="ruby-ivar">@is_pressed_update_count</span> = <span class="ruby-identifier">update_count</span>
@@ -256,7 +259,7 @@
           
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1764</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1926</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span> 
     <span class="ruby-identifier">text_x</span> = <span class="ruby-identifier">center_x</span> <span class="ruby-operator">-</span> (<span class="ruby-ivar">@text_pixel_width</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>)
     <span class="ruby-ivar">@gui_theme</span>.<span class="ruby-identifier">font</span>.<span class="ruby-identifier">draw_text</span>(<span class="ruby-ivar">@label</span>, <span class="ruby-identifier">text_x</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-identifier">z_order</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">text_color</span>)
@@ -278,7 +281,7 @@
           
 
           <div class="method-source-code" id="set_action-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1773</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1935</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_action</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) 
     <span class="ruby-ivar">@action_code</span> = <span class="ruby-identifier">block</span>
 <span class="ruby-keyword">end</span></pre>
@@ -299,7 +302,7 @@
           
 
           <div class="method-source-code" id="widget_z-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1769</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1931</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">widget_z</span> 
     <span class="ruby-constant">Z_ORDER_TEXT</span>
 <span class="ruby-keyword">end</span></pre>

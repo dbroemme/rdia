@@ -157,7 +157,7 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1697</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1856</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">data_x</span>, <span class="ruby-identifier">data_y</span>, <span class="ruby-identifier">color</span> = <span class="ruby-constant">COLOR_MAROON</span>, <span class="ruby-identifier">size</span> = <span class="ruby-value">4</span>) 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
     <span class="ruby-ivar">@override_color</span> = <span class="ruby-identifier">color</span>
@@ -189,7 +189,7 @@
           
 
           <div class="method-source-code" id="decrease_size-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1728</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1887</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">decrease_size</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@data_point_size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>
         <span class="ruby-ivar">@data_point_size</span> = <span class="ruby-ivar">@data_point_size</span> <span class="ruby-operator">-</span> <span class="ruby-value">2</span>
@@ -212,7 +212,7 @@
           
 
           <div class="method-source-code" id="increase_size-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1724</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1883</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">increase_size</span> 
     <span class="ruby-ivar">@data_point_size</span> = <span class="ruby-ivar">@data_point_size</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>
 <span class="ruby-keyword">end</span></pre>
@@ -233,7 +233,7 @@
           
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1705</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1864</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span>(<span class="ruby-identifier">override_size</span> = <span class="ruby-keyword">nil</span>)
     <span class="ruby-identifier">size_to_draw</span> = <span class="ruby-ivar">@data_point_size</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">override_size</span> 
@@ -261,7 +261,7 @@
           
 
           <div class="method-source-code" id="to_display-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1720</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1879</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_display</span> 
     <span class="ruby-node">&quot;#{@x}, #{@y}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -282,7 +282,7 @@
           
 
           <div class="method-source-code" id="widget_z-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1716</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 1875</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">widget_z</span> 
     <span class="ruby-constant">Z_ORDER_PLOT_POINTS</span>
 <span class="ruby-keyword">end</span></pre>

@@ -89,13 +89,13 @@
 <p>The layout sections are as follows:</p>
 
 <pre>+-------------------------------------------------+
-+                  LAYOUT_NORTH                   +
++                  SECTION_NORTH                  +
 +-------------------------------------------------+
 +                                                 +
-+                  LAYOUT_CENTER                  +
++                  SECTION_CENTER                 +
 +                                                 +
 +-------------------------------------------------+
-+                  LAYOUT_SOUTH                   +
++                  SECTION_SOUTH                  +
 +-------------------------------------------------+</pre>
 
   </section>
@@ -126,7 +126,7 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 790</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 914</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">parent_widget</span>, <span class="ruby-identifier">args</span> = {})
     <span class="ruby-keyword">super</span>
     <span class="ruby-comment"># Divide the height into 100, 100, and the middle gets everything else</span>
@@ -134,10 +134,10 @@
     <span class="ruby-identifier">middle_section_y_start</span> = <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">100</span>
     <span class="ruby-identifier">bottom_section_y_start</span> = <span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> <span class="ruby-value">100</span>
     <span class="ruby-identifier">height_middle_section</span> = <span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> <span class="ruby-value">200</span>
-    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">LAYOUT_NORTH</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-value">100</span>)
-    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">LAYOUT_CENTER</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">middle_section_y_start</span>,
+    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">SECTION_NORTH</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-value">100</span>)
+    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">SECTION_CENTER</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">middle_section_y_start</span>,
                                                      <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height_middle_section</span>, <span class="ruby-constant">FILL_VERTICAL_STACK</span>)
-    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">LAYOUT_SOUTH</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">bottom_section_y_start</span>, <span class="ruby-identifier">width</span>, <span class="ruby-value">100</span>)
+    <span class="ruby-ivar">@container_map</span>[<span class="ruby-constant">SECTION_SOUTH</span>] = <span class="ruby-constant">GuiContainer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">bottom_section_y_start</span>, <span class="ruby-identifier">width</span>, <span class="ruby-value">100</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

@@ -73,12 +73,16 @@
 
   <ul class="link-list" role="directory">
     <li class="calls-super" ><a href="#method-c-new">::new</a>
+    <li ><a href="#method-i-create_overlay_widget">#create_overlay_widget</a>
     <li ><a href="#method-i-display_help">#display_help</a>
+    <li ><a href="#method-i-overlay_content">#overlay_content</a>
     <li ><a href="#method-i-render_basic_widgets">#render_basic_widgets</a>
     <li ><a href="#method-i-render_border_layout">#render_border_layout</a>
     <li ><a href="#method-i-render_east_west_layout">#render_east_west_layout</a>
     <li ><a href="#method-i-render_footer_layout">#render_footer_layout</a>
+    <li ><a href="#method-i-render_form">#render_form</a>
     <li ><a href="#method-i-render_header_layout">#render_header_layout</a>
+    <li ><a href="#method-i-render_overlay">#render_overlay</a>
     <li ><a href="#method-i-render_plot">#render_plot</a>
     <li ><a href="#method-i-render_top_middle_bottom_layout">#render_top_middle_bottom_layout</a>
     <li ><a href="#method-i-render_vertical_layout">#render_vertical_layout</a>
@@ -124,10 +128,9 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 14</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>
     <span class="ruby-keyword">super</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">800</span>, <span class="ruby-value">600</span>)
-    <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_TOP_MIDDLE_BOTTOM</span>)
     <span class="ruby-identifier">disable_border</span>
 
     <span class="ruby-keyword">if</span> <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
@@ -152,6 +155,10 @@
         <span class="ruby-identifier">render_east_west_layout</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-constant">ARGV</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;plot&quot;</span>
         <span class="ruby-identifier">render_plot</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-constant">ARGV</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;form&quot;</span>
+        <span class="ruby-identifier">render_form</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-constant">ARGV</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;overlay&quot;</span>
+        <span class="ruby-identifier">render_overlay</span>
     <span class="ruby-keyword">else</span> 
         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Argument #{ARGV[0]} is invalid.&quot;</span>
         <span class="ruby-identifier">display_help</span> 
@@ -170,6 +177,27 @@
          <h3>Public Instance Methods</h3>
        </header>
 
+      <div id="method-i-create_overlay_widget" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">create_overlay_widget</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="create_overlay_widget-source">
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 241</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_overlay_widget</span> 
+    <span class="ruby-constant">InfoBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">100</span>, <span class="ruby-value">60</span>, <span class="ruby-value">600</span>, <span class="ruby-value">400</span>, <span class="ruby-string">&quot;Sample Overlay&quot;</span>, <span class="ruby-identifier">overlay_content</span>, { <span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">WadsBrightTheme</span>.<span class="ruby-identifier">new</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
       <div id="method-i-display_help" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">display_help</span><span
@@ -181,7 +209,7 @@
           
 
           <div class="method-source-code" id="display_help-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 47</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">display_help</span> 
     <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Valid arguments are:&quot;</span>
     <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;  border     show BorderLayout&quot;</span>
@@ -191,8 +219,37 @@
     <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;  vertical   show VerticalColumnLayout&quot;</span>
     <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;  eastwest   show EastWestLayout&quot;</span>
     <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;  plot       show a simple plot using HeaderContentLayout&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;  form       test a form&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;  overlay    show an overlay widget&quot;</span>
     <span class="ruby-identifier">exit</span>
 <span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-overlay_content" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">overlay_content</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="overlay_content-source">
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 245</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">overlay_content</span>
+        <span class="ruby-identifier">&lt;&lt;~HEREDOC</span>
+<span class="ruby-value">        This is a sample overlay widget which typically
+        you would use to display important information
+        upon request. The InfoBox widget is used for
+        this purpose.
+</span><span class="ruby-identifier">        HEREDOC</span>
+
+    <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
 
@@ -210,31 +267,32 @@
           
 
           <div class="method-source-code" id="render_basic_widgets-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 59</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_basic_widgets</span>
+    <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_TOP_MIDDLE_BOTTOM</span>)
+
     <span class="ruby-comment"># Example of using the layout for absolute positioning</span>
     <span class="ruby-comment"># and then relative positioning of a child widget</span>
     <span class="ruby-comment"># within that</span>
-    <span class="ruby-identifier">image</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_image</span>(<span class="ruby-string">&quot;./media/Banner.png&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_TOP</span>})
+    <span class="ruby-identifier">image</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_image</span>(<span class="ruby-string">&quot;./media/Banner.png&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_TOP</span>})
     <span class="ruby-identifier">image</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;Banner&quot;</span>, <span class="ruby-value">10</span>, <span class="ruby-value">10</span>)
 
-    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;Hello&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CENTER</span>})
-    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;There&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CENTER</span>})
-    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Test Button&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CENTER</span>}) <span class="ruby-keyword">do</span> 
+    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;Hello&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CENTER</span>})
+    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;There&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CENTER</span>})
+    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Test Button&quot;</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CENTER</span>}) <span class="ruby-keyword">do</span> 
         <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;User hit the test button&quot;</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-identifier">table</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_multi_select_table</span>([<span class="ruby-string">&quot;A&quot;</span>, <span class="ruby-string">&quot;B&quot;</span>, <span class="ruby-string">&quot;C&quot;</span>], <span class="ruby-value">4</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CENTER</span>})
+    <span class="ruby-identifier">table</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_multi_select_table</span>([<span class="ruby-string">&quot;A&quot;</span>, <span class="ruby-string">&quot;B&quot;</span>, <span class="ruby-string">&quot;C&quot;</span>], <span class="ruby-value">4</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CENTER</span>})
     <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;These&quot;</span>, <span class="ruby-string">&quot;are&quot;</span>, <span class="ruby-string">&quot;values in row 1&quot;</span>])
     <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;These&quot;</span>, <span class="ruby-string">&quot;are&quot;</span>, <span class="ruby-string">&quot;values in row 2&quot;</span>])
     <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;These&quot;</span>, <span class="ruby-string">&quot;are&quot;</span>, <span class="ruby-string">&quot;values in row 3&quot;</span>])
     <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;These&quot;</span>, <span class="ruby-string">&quot;are&quot;</span>, <span class="ruby-string">&quot;values in row 4&quot;</span>])
 
-    <span class="ruby-identifier">panel</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_horizontal_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_BOTTOM</span>})
-    <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Exit&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> <span class="ruby-value">30</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">panel</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_horizontal_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_BOTTOM</span>})
+    <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Exit&quot;</span>, <span class="ruby-value">380</span>, <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">height</span> <span class="ruby-operator">-</span> <span class="ruby-value">30</span>) <span class="ruby-keyword">do</span>
         <span class="ruby-constant">WidgetResult</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">true</span>)
     <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">panel</span>.<span class="ruby-identifier">center_children</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -253,16 +311,13 @@
           
 
           <div class="method-source-code" id="render_border_layout-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 97</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_border_layout</span>
     <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_BORDER</span>)
-    <span class="ruby-identifier">header</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_NORTH</span>})
-    <span class="ruby-comment"># The zero x coord doesn&#39;t matter here because we center it below</span>
-    <span class="ruby-comment"># Centering only adjusts the x coordinate</span>
-    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the header section&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">35</span>)
-    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">center_children</span>
+    <span class="ruby-identifier">header</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_NORTH</span>})
+    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the header section&quot;</span>, { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_CENTER</span>})
 
-    <span class="ruby-identifier">west</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_vertical_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_WEST</span>})
+    <span class="ruby-identifier">west</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_vertical_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_WEST</span>})
     <span class="ruby-identifier">west</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Do stuff&quot;</span>) <span class="ruby-keyword">do</span> 
         <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Hit the do stuff button&quot;</span>
     <span class="ruby-keyword">end</span>
@@ -270,17 +325,14 @@
         <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Hit the more stuff button&quot;</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CENTER</span>})
+    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CENTER</span>})
 
-    <span class="ruby-identifier">east</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_vertical_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_EAST</span>})
+    <span class="ruby-identifier">east</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_vertical_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_EAST</span>})
     <span class="ruby-identifier">east</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;item1&quot;</span>)
     <span class="ruby-identifier">east</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;item2&quot;</span>)
 
-    <span class="ruby-identifier">footer</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_SOUTH</span>})
-    <span class="ruby-comment"># The zero x coord doesn&#39;t matter here because we center it below</span>
-    <span class="ruby-comment"># Centering only adjusts the x coordinate</span>
-    <span class="ruby-identifier">footer</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the footer section&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">35</span>)
-    <span class="ruby-identifier">footer</span>.<span class="ruby-identifier">center_children</span>
+    <span class="ruby-identifier">footer</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_SOUTH</span>})
+    <span class="ruby-identifier">footer</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the footer section&quot;</span>, { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_CENTER</span>})
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -299,15 +351,15 @@
           
 
           <div class="method-source-code" id="render_east_west_layout-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 171</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 168</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_east_west_layout</span> 
     <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_EAST_WEST</span>)
-    <span class="ruby-identifier">table</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_multi_select_table</span>([<span class="ruby-string">&quot;A&quot;</span>, <span class="ruby-string">&quot;B&quot;</span>, <span class="ruby-string">&quot;&quot;</span>], <span class="ruby-value">4</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_WEST</span>})
+    <span class="ruby-identifier">table</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_multi_select_table</span>([<span class="ruby-string">&quot;A&quot;</span>, <span class="ruby-string">&quot;B&quot;</span>, <span class="ruby-string">&quot;&quot;</span>], <span class="ruby-value">4</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_WEST</span>})
     <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;Key1&quot;</span>, <span class="ruby-string">&quot;Value1&quot;</span>])
     <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;Key2&quot;</span>, <span class="ruby-string">&quot;Value2&quot;</span>])
     <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;Key3&quot;</span>, <span class="ruby-string">&quot;Value3&quot;</span>])
 
-    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_EAST</span>})
+    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_EAST</span>})
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -326,17 +378,55 @@
           
 
           <div class="method-source-code" id="render_footer_layout-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 152</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 151</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_footer_layout</span>
     <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_CONTENT_FOOTER</span>)
 
-    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CONTENT</span>})
+    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CONTENT</span>})
 
-    <span class="ruby-identifier">footer</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_FOOTER</span>})
-    <span class="ruby-comment"># The zero x coord doesn&#39;t matter here because we center it below</span>
-    <span class="ruby-comment"># Centering only adjusts the x coordinate</span>
-    <span class="ruby-identifier">footer</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the footer section&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">35</span>)
-    <span class="ruby-identifier">footer</span>.<span class="ruby-identifier">center_children</span>
+    <span class="ruby-identifier">footer</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_FOOTER</span>,
+                                        <span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">WadsBrightTheme</span>.<span class="ruby-identifier">new</span> })
+    <span class="ruby-identifier">footer</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the footer section&quot;</span>, { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_CENTER</span>})
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-render_form" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">render_form</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="render_form-source">
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 204</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_form</span>
+    <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_CONTENT_FOOTER</span>)
+
+    <span class="ruby-identifier">content_panel</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CONTENT</span>,
+                                               <span class="ruby-constant">ARG_LAYOUT</span>  <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_EAST_WEST</span>,
+                                               <span class="ruby-constant">ARG_PANEL_WIDTH</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">200</span> })
+
+    <span class="ruby-identifier">label_panel</span> = <span class="ruby-identifier">content_panel</span>.<span class="ruby-identifier">add_panel</span>(<span class="ruby-constant">SECTION_WEST</span>)
+    <span class="ruby-identifier">label_panel</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;First Name&quot;</span>, { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_RIGHT</span>})
+    <span class="ruby-identifier">label_panel</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;Middle Name&quot;</span>, { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_RIGHT</span>})
+    <span class="ruby-identifier">label_panel</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;Last Name&quot;</span>, { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_RIGHT</span>})
+
+    <span class="ruby-identifier">field_panel</span> = <span class="ruby-identifier">content_panel</span>.<span class="ruby-identifier">add_panel</span>(<span class="ruby-constant">SECTION_EAST</span>)
+    <span class="ruby-ivar">@first_name</span> = <span class="ruby-identifier">field_panel</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text_input</span>(<span class="ruby-value">200</span>)
+    <span class="ruby-ivar">@middle_name</span> = <span class="ruby-identifier">field_panel</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text_input</span>(<span class="ruby-value">200</span>)
+    <span class="ruby-ivar">@last_name</span> = <span class="ruby-identifier">field_panel</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text_input</span>(<span class="ruby-value">200</span>)
+
+    <span class="ruby-identifier">footer_panel</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_FOOTER</span>})
+    <span class="ruby-identifier">footer_panel</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Display Full Name&quot;</span>, {<span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_CENTER</span>}) <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">footer_panel</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-node">&quot;The full name is #{@first_name.text} #{@middle_name.text} #{@last_name.text}.&quot;</span>)
+    <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -355,17 +445,54 @@
           
 
           <div class="method-source-code" id="render_header_layout-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 85</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_header_layout</span>
     <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_HEADER_CONTENT</span>)
 
-    <span class="ruby-identifier">header</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_HEADER</span>})
-    <span class="ruby-comment"># The zero x coord doesn&#39;t matter here because we center it below</span>
-    <span class="ruby-comment"># Centering only adjusts the x coordinate</span>
-    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the header section&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">35</span>)
-    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">center_children</span>
+    <span class="ruby-identifier">header</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_HEADER</span>,
+                                        <span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">WadsNatureTheme</span>.<span class="ruby-identifier">new</span> })
+    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the header section&quot;</span>,
+                               { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_CENTER</span>,
+                                 <span class="ruby-constant">ARG_USE_LARGE_FONT</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>})
 
-    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CONTENT</span>})
+    <span class="ruby-identifier">main</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CONTENT</span>,
+                                      <span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">WadsNatureTheme</span>.<span class="ruby-identifier">new</span> })
+    <span class="ruby-identifier">main</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>)
+    <span class="ruby-identifier">table</span> = <span class="ruby-identifier">main</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_multi_select_table</span>([<span class="ruby-string">&quot;A&quot;</span>, <span class="ruby-string">&quot;B&quot;</span>, <span class="ruby-string">&quot;C&quot;</span>], <span class="ruby-value">4</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_WEST</span>})
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;Key1&quot;</span>, <span class="ruby-string">&quot;Value1&quot;</span>, <span class="ruby-string">&quot;ValueD&quot;</span>])
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;Key2&quot;</span>, <span class="ruby-string">&quot;Value2&quot;</span>, <span class="ruby-string">&quot;ValueE&quot;</span>])
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">add_row</span>([<span class="ruby-string">&quot;Key3&quot;</span>, <span class="ruby-string">&quot;Value3&quot;</span>, <span class="ruby-string">&quot;ValueF&quot;</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div id="method-i-render_overlay" class="method-detail ">
+        <div class="method-heading">
+          <span class="method-name">render_overlay</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+
+        <div class="method-description">
+          
+
+          <div class="method-source-code" id="render_overlay-source">
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 227</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_overlay</span>
+    <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_HEADER_CONTENT</span>)
+
+    <span class="ruby-identifier">header</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_HEADER</span>})
+    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the header section&quot;</span>, { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_CENTER</span>})
+
+    <span class="ruby-identifier">main</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CONTENT</span>})
+    <span class="ruby-identifier">main</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>)
+
+    <span class="ruby-identifier">main</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_button</span>(<span class="ruby-string">&quot;Display InfoBox&quot;</span>, {<span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_CENTER</span>}) <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">add_overlay</span>(<span class="ruby-identifier">create_overlay_widget</span>)
+    <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -384,18 +511,19 @@
           
 
           <div class="method-source-code" id="render_plot-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 181</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 178</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_plot</span>
     <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_HEADER_CONTENT</span>)
 
-    <span class="ruby-identifier">header</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_HEADER</span>})
+    <span class="ruby-identifier">header</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_HEADER</span>,
+                                        <span class="ruby-constant">ARG_THEME</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">WadsBrightTheme</span>.<span class="ruby-identifier">new</span> })
     <span class="ruby-comment"># The zero x coord doesn&#39;t matter here because we center it below</span>
     <span class="ruby-comment"># Centering only adjusts the x coordinate</span>
     <span class="ruby-identifier">header</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;This is a plot of sine (yellow) and cosine (pink) waves&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">35</span>)
     <span class="ruby-identifier">header</span>.<span class="ruby-identifier">center_children</span>
     <span class="ruby-identifier">header</span>.<span class="ruby-identifier">disable_border</span>
 
-    <span class="ruby-identifier">plot</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_plot</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_CONTENT</span>})
+    <span class="ruby-identifier">plot</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_plot</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_CONTENT</span>})
     <span class="ruby-identifier">plot</span>.<span class="ruby-identifier">define_range</span>(<span class="ruby-constant">VisibleRange</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">-5</span>, <span class="ruby-value">5</span>, <span class="ruby-value">-5</span>, <span class="ruby-value">5</span>))
     <span class="ruby-identifier">plot</span>.<span class="ruby-identifier">enable_border</span>
     <span class="ruby-identifier">x</span> = <span class="ruby-value">-5</span>
@@ -426,22 +554,16 @@
           
 
           <div class="method-source-code" id="render_top_middle_bottom_layout-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 126</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 131</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_top_middle_bottom_layout</span>
     <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_TOP_MIDDLE_BOTTOM</span>)
-    <span class="ruby-identifier">header</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_TOP</span>})
-    <span class="ruby-comment"># The zero x coord doesn&#39;t matter here because we center it below</span>
-    <span class="ruby-comment"># Centering only adjusts the x coordinate</span>
-    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the header section&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">35</span>)
-    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">center_children</span>
+    <span class="ruby-identifier">header</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_TOP</span>})
+    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the header section&quot;</span>, { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_CENTER</span>})
 
-    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_MIDDLE</span>})
+    <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_document</span>(<span class="ruby-identifier">sample_content</span>, { <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_MIDDLE</span>})
 
-    <span class="ruby-identifier">footer</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">LAYOUT_BOTTOM</span>})
-    <span class="ruby-comment"># The zero x coord doesn&#39;t matter here because we center it below</span>
-    <span class="ruby-comment"># Centering only adjusts the x coordinate</span>
-    <span class="ruby-identifier">footer</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the footer section&quot;</span>, <span class="ruby-value">0</span>, <span class="ruby-value">35</span>)
-    <span class="ruby-identifier">footer</span>.<span class="ruby-identifier">center_children</span>
+    <span class="ruby-identifier">footer</span> = <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_max_panel</span>({ <span class="ruby-constant">ARG_SECTION</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">SECTION_BOTTOM</span>})
+    <span class="ruby-identifier">footer</span>.<span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_text</span>(<span class="ruby-string">&quot;I am the footer section&quot;</span>, { <span class="ruby-constant">ARG_TEXT_ALIGN</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">TEXT_ALIGN_CENTER</span>})
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -460,7 +582,7 @@
           
 
           <div class="method-source-code" id="render_vertical_layout-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 164</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 161</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render_vertical_layout</span> 
     <span class="ruby-identifier">set_layout</span>(<span class="ruby-constant">LAYOUT_VERTICAL_COLUMN</span>)
     <span class="ruby-identifier">get_layout</span>.<span class="ruby-identifier">add_image</span>(<span class="ruby-string">&quot;./media/Banner.png&quot;</span>)
@@ -484,7 +606,7 @@
           
 
           <div class="method-source-code" id="sample_content-source">
-            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 143</span>
+            <pre><span class="ruby-comment"># File samples/theme_test.rb, line 142</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sample_content</span>
         <span class="ruby-identifier">&lt;&lt;~HEREDOC</span>
 <span class="ruby-value">        This is the content section.

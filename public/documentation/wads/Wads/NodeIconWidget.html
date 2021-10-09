@@ -178,7 +178,7 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2705</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2879</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">node</span>, <span class="ruby-identifier">color</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">initial_scale</span> = <span class="ruby-value">1</span>, <span class="ruby-identifier">is_explorer</span> = <span class="ruby-keyword">false</span>) 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>) 
     <span class="ruby-ivar">@override_color</span> = <span class="ruby-identifier">color</span>
@@ -218,7 +218,7 @@
           
 
           <div class="method-source-code" id="get_text_widget-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2748</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2922</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_text_widget</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@children</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@children</span>[<span class="ruby-value">0</span>]
@@ -243,7 +243,7 @@
           
 
           <div class="method-source-code" id="is_background-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2725</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2899</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">is_background</span> 
     <span class="ruby-ivar">@scale</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0.1</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@is_explorer</span>
 <span class="ruby-keyword">end</span></pre>
@@ -264,7 +264,7 @@
           
 
           <div class="method-source-code" id="name-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2721</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2895</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">name</span> 
     <span class="ruby-ivar">@data_node</span>.<span class="ruby-identifier">name</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -285,7 +285,7 @@
           
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2756</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2930</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span> 
     <span class="ruby-ivar">@image</span>.<span class="ruby-identifier">draw</span> <span class="ruby-ivar">@x</span>, <span class="ruby-ivar">@y</span>, <span class="ruby-identifier">relative_z_order</span>(<span class="ruby-constant">Z_ORDER_FOCAL_ELEMENTS</span>), <span class="ruby-ivar">@scale</span>, <span class="ruby-ivar">@scale</span>
 <span class="ruby-keyword">end</span></pre>
@@ -306,7 +306,7 @@
           
 
           <div class="method-source-code" id="set_scale-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2729</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2903</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_scale</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">is_explorer</span> = <span class="ruby-keyword">false</span>)
     <span class="ruby-ivar">@is_explorer</span> = <span class="ruby-identifier">is_explorer</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0.5</span>
@@ -342,7 +342,7 @@
           
 
           <div class="method-source-code" id="widget_z-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2760</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2934</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">widget_z</span> 
     <span class="ruby-constant">Z_ORDER_TEXT</span>
 <span class="ruby-keyword">end</span></pre>

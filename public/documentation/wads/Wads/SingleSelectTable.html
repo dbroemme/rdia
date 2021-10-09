@@ -126,7 +126,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(x, y, width, height, headers, max_visible_rows = 10)</span>
+            class="method-args">(x, y, width, height, headers, max_visible_rows = 10, args = {})</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -138,9 +138,9 @@
             </div>
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2235</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">headers</span>, <span class="ruby-identifier">max_visible_rows</span> = <span class="ruby-value">10</span>) 
-    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">headers</span>, <span class="ruby-identifier">max_visible_rows</span>) 
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2409</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">headers</span>, <span class="ruby-identifier">max_visible_rows</span> = <span class="ruby-value">10</span>, <span class="ruby-identifier">args</span> = {}) 
+    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">width</span>, <span class="ruby-identifier">height</span>, <span class="ruby-identifier">headers</span>, <span class="ruby-identifier">max_visible_rows</span>, <span class="ruby-identifier">args</span>) 
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -166,7 +166,7 @@
           
 
           <div class="method-source-code" id="handle_mouse_down-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2286</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2460</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">handle_mouse_down</span> <span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">contains_click</span>(<span class="ruby-identifier">mouse_x</span>, <span class="ruby-identifier">mouse_y</span>)
         <span class="ruby-identifier">row_number</span> = <span class="ruby-identifier">determine_row_number</span>(<span class="ruby-identifier">mouse_y</span>)
@@ -215,7 +215,7 @@
           
 
           <div class="method-source-code" id="is_row_selected-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2239</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2413</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">is_row_selected</span>(<span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-identifier">row_number</span> = <span class="ruby-identifier">determine_row_number</span>(<span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">row_number</span>.<span class="ruby-identifier">nil?</span>
@@ -245,7 +245,7 @@
             </div>
 
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2272</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2446</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">render</span> 
     <span class="ruby-keyword">super</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@selected_row</span> 
@@ -272,7 +272,7 @@
           
 
           <div class="method-source-code" id="set_selected_row-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2248</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2422</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">set_selected_row</span>(<span class="ruby-identifier">mouse_y</span>, <span class="ruby-identifier">column_number</span>)
     <span class="ruby-identifier">row_number</span> = <span class="ruby-identifier">determine_row_number</span>(<span class="ruby-identifier">mouse_y</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">row_number</span>.<span class="ruby-identifier">nil?</span>
@@ -303,7 +303,7 @@
           
 
           <div class="method-source-code" id="unset_selected_row-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2262</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2436</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">unset_selected_row</span>(<span class="ruby-identifier">mouse_y</span>, <span class="ruby-identifier">column_number</span>) 
     <span class="ruby-identifier">row_number</span> = <span class="ruby-identifier">determine_row_number</span>(<span class="ruby-identifier">mouse_y</span>) 
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">row_number</span>.<span class="ruby-identifier">nil?</span>
@@ -330,7 +330,7 @@
           
 
           <div class="method-source-code" id="widget_z-source">
-            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2282</span>
+            <pre><span class="ruby-comment"># File lib/wads/widgets.rb, line 2456</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">widget_z</span> 
     <span class="ruby-constant">Z_ORDER_TEXT</span>
 <span class="ruby-keyword">end</span></pre>
