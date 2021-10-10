@@ -54,7 +54,7 @@ if(is_home == "true"){
         $(window).scroll(function() { skills.each(function(){ jQuery(this).find('.skillbar-bar').animate({width:jQuery(this).attr('data-percent') },6000); }); });
 
         // banner
-        jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
+        jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':false,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
 
         // home fixes
         (function($) {
